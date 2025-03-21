@@ -1,5 +1,87 @@
 @import "tailwindcss";
 
-@theme{
+@theme {
   --font-poppins: Poppins, sans-serif;
+  --color-background: #f6f6f7;
+  --color-card-bg: #ffffff;
+  --color-modal-bg: #fcfcfc;
+  --color-sidebar-bg: #ffffff;
+  --color-top-bar: #fcfcfc;
+  --color-primary: #bedbb0;
+  --color-secondary: #9dc888;
+  --color-title: #161616;
+  --color-btn-text: #161616;
+  --color-text: #161616b3;
+  --color-input: #bedbb066;
+  --color-input-active: #bedbb0;
+  --color-placeholder: #16161680;
+  --color-input-text: #161616;
+  --color-icon: #16161680;
+  --color-icon-selected: #161616;
+  --color-icon-active: #bedbb0;
+}
+
+[data-theme="dark"] {
+  --color-background: #1f1f1f;
+  --color-card-bg: #121212;
+  --color-modal-bg: #151515;
+  --color-sidebar-bg: #121212;
+  --color-top-bar: #161616;
+  --color-primary: #bedbb0;
+  --color-secondary: #9dc888;
+  --color-title: #ffffff;
+  --color-btn-text: #161616;
+  --color-text: #ffffff80;
+  --color-input: #bedbb066;
+  --color-input-active: #bedbb0;
+  --color-placeholder: #ffffff80;
+  --color-input-text: #ffffff;
+  --color-icon: #ffffff80;
+  --color-icon-selected: #ffffff;
+  --color-icon-active: #bedbb0;
+}
+
+[data-theme="violet"] {
+  --color-background: #ecedfd;
+  --color-card-bg: #ffffff;
+  --color-modal-bg: #fcfcfc;
+  --color-sidebar-bg: #5255bc;
+  --color-top-bar: #ffffff;
+  --color-primary: #5255bc;
+  --color-secondary: #787ede;
+  --color-title: #161616;
+  --color-btn-text: #ffffff;
+  --color-text: #161616b3;
+  --color-input: #5255bc66;
+  --color-input-active: #5255bc;
+  --color-placeholder: #16161680;
+  --color-input-text: #161616;
+  --color-icon: #16161680;
+  --color-icon-selected: #161616;
+  --color-icon-active: #5255bc;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-title;
+  }
+  button {
+    @apply bg-primary hover:bg-secondary text-btn-text hover:cursor-pointer rounded p-4 font-semibold;
+  }
+}
+
+.card {
+  @apply bg-card-bg rounded px-3.5 py-6;
+}
+
+.modal {
+  @apply bg-modal-bg rounded p-6;
 }

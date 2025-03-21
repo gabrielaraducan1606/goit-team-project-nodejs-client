@@ -1,14 +1,14 @@
-import React from 'react'
-
+import React from "react";
+import ThemeToggle from "./components/themeToggle";
 
 const App = () => {
   return (
     <>
-    <h1 className=''>
-      tailwind test
-    </h1>
+      <ThemeToggle />
+      <h3 className="text-6xl">tailwind test</h3>
+      <button>test</button>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
