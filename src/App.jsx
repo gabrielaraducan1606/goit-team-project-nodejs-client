@@ -4,7 +4,7 @@ import React from 'react'
 const App = () => {
   return (
     <>
-    <h1 className=''>
+    <h1 className='text-6xl'>
       tailwind test
     </h1>
     </>
