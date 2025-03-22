@@ -1,7 +1,12 @@
 import React from "react";
 import ThemeToggle from "./components/themeToggle";
+import { selectUserData } from "./services/reduxServices";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const userData = useSelector(selectUserData);
+  console.log(userData);
+
   return (
     <>
       <ThemeToggle />
