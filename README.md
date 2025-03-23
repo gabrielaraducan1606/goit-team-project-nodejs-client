@@ -34,10 +34,32 @@ VITE_API_URL=http://localhost:5000
 ```
 
 ---
+
+---
+
+
+## ▶️ Start Application
+
+### 🔹 **In development:**
+
+```bash
+npm run dev
+```
+
+### 🔹 **In production:**
+
+```bash
+npm start
+```
+
+The app will start at: `http://localhost:5173/`
+
+---
+
 ## 📂 Project Structure
 
 ```bash
-GOIT-TASK-MANAGER-BACKEND/
+GOIT-TASK-MANAGER-CLIENT/
 ├── public/
 │      ├── images/
 │      └── svg/
