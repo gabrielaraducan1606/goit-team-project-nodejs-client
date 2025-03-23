@@ -1,17 +1,23 @@
 import React from "react";
 import ThemeToggle from "./components/themeToggle";
-import { selectUserData } from "./services/reduxServices";
-import { useSelector } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
+import { selectUserData } from "./redux/selectors";
+import { loginUser } from "./services/reduxServices";
 
 const App = () => {
   const userData = useSelector(selectUserData);
+  const dispatch = useDispatch();
   console.log(userData);
 
+  const handleClick = () => {
+     dispatch(loginUser({email:'alex@email.com', password:'123123123'}))
+  };
   return (
     <>
       <ThemeToggle />
       <h3 className="text-6xl">tailwind test</h3>
-      <button>test</button>
+      <button onClick={handleClick}>test</button>
     </>
   );
 };
