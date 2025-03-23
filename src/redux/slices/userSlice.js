@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser } from "../../services/reduxServices";
+import { fetchBoards, loginUser } from "../../services/reduxServices";
 
 const initialState = {
   userData: {
@@ -7,6 +7,7 @@ const initialState = {
     name: null,
     email: null,
     token: null,
+    avatarURL: null,
   },
   boards: [],
   columns: [],
@@ -29,7 +30,23 @@ export const userSlice = createSlice({
         state.isFetching = false;
         state.userData = action.payload;
         state.isLoggedIn = true;
-      });
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.isFetching = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchBoards.pending, (state) => {
+        state.isFetching = true;
+        state.error = null;
+      })
+      .addCase(fetchBoards.fulfilled, (state, action) => {
+        state.isFetching = false;
+        state.boards = action.payload;
+      })
+      .addCase(fetchBoards.rejected, (state, action) => {
+        state.isFetching = false;
+        state.error = action.payload;
+      })
   },
 });
 
