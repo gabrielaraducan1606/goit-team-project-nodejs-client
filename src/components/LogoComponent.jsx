@@ -2,8 +2,7 @@ import React from "react";
 
 const LogoComponent = () => {
   return (
-    <div className="flex items-center justify-center w-[104px] h-[32px]"
-         style={{ color: "var(--text-color)" }}>
+    <div className="flex items-center justify-center w-[104px] h-[32px]" >
       {/* SVG Logo */}
       <img src="/public/svg/logo.svg" alt="TaskPro Logo" className="bg-[#1F1F1F] p-[8px_10px] rounded-md" />
       {/* Text */}

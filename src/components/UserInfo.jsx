@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { selectUserData } from "../redux/selectors"; // Importăm selectorul pentru userData
+import { selectUserData } from "../redux/selectors";
 
 const UserInfo = () => {
   // Accesăm datele utilizatorului din Redux
@@ -12,7 +12,7 @@ const UserInfo = () => {
       <img
         src={user.avatarURL || "/default-avatar.jpg"} // Dacă avatarURL este null, afișăm un avatar default
         alt="User Avatar"
-        className="w-10 h-10 rounded-full"
+        className="size-10 rounded-full"
       />
       <span className="font-medium">{user.name || "User"}</span> {/* Afișăm numele utilizatorului */}
     </div>

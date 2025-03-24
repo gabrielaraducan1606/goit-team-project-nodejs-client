@@ -1,15 +1,11 @@
 import React from "react";
-import ThemeToggle from "./themeToggle";  // Importă ThemeToggle
-import UserInfo from "./UserInfo";  // Asum că ai deja componenta UserInfo
+import ThemeToggle from "./themeToggle";
+import UserInfo from "./UserInfo";
 
 const Header = () => {
   return (
-    <header className="flex justify-end gap-[14px] items-center p-4" 
-            style={{ backgroundColor: "var(--bg-color)", color: "var(--text-color)" }}>
-      {/* Theme Toggle */}
+    <header className="flex justify-end gap-[14px] items-center p-4" >
       <ThemeToggle />
-
-      {/* Info utilizator */}
       <UserInfo />
     </header>
   );

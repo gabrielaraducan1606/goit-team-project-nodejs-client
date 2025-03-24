@@ -23,8 +23,12 @@ const App = () => {
     <>
       <BrowserRouter>
       <Routes>
+
         <Route path="/" element={<Welcome />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} >
+           {/* <Route path=":boardId" element={<BoardPage />} /> */}
+        </Route>
+
       </Routes>
       </BrowserRouter>
       <ThemeToggle/>
