@@ -19,6 +19,7 @@
   --color-icon: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #bedbb0;
+  --color-boards-hover:#00000033;
 }
 
 [data-theme="dark"] {
@@ -39,6 +40,7 @@
   --color-icon: #ffffff80;
   --color-icon-selected: #ffffff;
   --color-icon-active: #bedbb0;
+  --color-boards-hover:#ffffff33;
 }
 
 [data-theme="violet"] {
@@ -59,6 +61,7 @@
   --color-icon: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #5255bc;
+  --color-boards-hover:#ffffff33;
 }
 
 @layer base {
