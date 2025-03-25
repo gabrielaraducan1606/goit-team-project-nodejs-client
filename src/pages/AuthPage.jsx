@@ -33,7 +33,7 @@ export default function RegistrationPage() {
         </div>
 
         {/* Formular */}
-        <form className="space-y-[14px]">
+        <form className="space-y-[15px]">
           {isRegister && (
             <div>
               <input
