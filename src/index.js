@@ -1,0 +1,10 @@
+export { default as Modal } from "./Modal";
+export { default as NewBoardModal } from "./NewBoardModal";
+export { default as EditBoardModal } from "./EditBoardModal";
+export { default as HelpModal } from "./HelpModal";
+export { default as AddCardModal } from "./AddCardModal";
+export { default as EditCardModal } from "./EditCardModal";
+export { default as AddColumnModal } from "./AddColumnModal";
+export { default as EditColumnModal } from "./EditColumnModal";
+export { default as EditProfileModal } from "./EditProfileModal";
+export { default as FiltersModal } from "./FiltersModal";
