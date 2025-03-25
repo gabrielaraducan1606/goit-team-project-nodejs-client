@@ -1,6 +1,7 @@
 import React from "react";
 import ThemeToggle from "./components/themeToggle";
 import Welcome from "./pages/WelcomePage";
+import Registration from "./pages/RegistrationPage";
 import { useDispatch, useSelector } from "react-redux";
 import { selectBoards, selectUserData } from "./redux/selectors";
 import { fetchBoards, loginUser } from "./services/reduxServices";
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <>
       <Welcome />
+      <Registration/>
       <ThemeToggle />
       <h3 className="text-6xl">tailwind test</h3>
       <button onClick={handleClick}>test</button>
