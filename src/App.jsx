@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectColumns, selectUserData } from "./redux/selectors";
-import { fetchColumns, loginUser } from "./services/reduxServices";
+import { fetchBoards, loginUser } from "./services/reduxServices";
 
 const App = () => {
   const userData = useSelector(selectUserData);
@@ -16,23 +16,19 @@ const App = () => {
 
   const handleClick = () => {
     dispatch(loginUser({ email: "alex@email.com", password: "123123123" }));
-    dispatch(fetchColumns("67e03dd656c61f514590c2c8"));
+    dispatch(fetchBoards());
     // dispatch(createBoard({ title: "board 1232", background: "http://localhost:5000/images/star-sky.jpg" }));
   };
   return (
     <>
       <BrowserRouter>
-      <Routes>
-
-        <Route path="/" element={<Welcome />} />
-        <Route path="/home" element={<HomePage />} >
-           {/* <Route path=":boardId" element={<BoardPage />} /> */}
-        </Route>
-
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/home" element={<HomePage />}>
+            {/* <Route path=":boardId" element={<BoardPage />} /> */}
+          </Route>
+        </Routes>
       </BrowserRouter>
-      <ThemeToggle/>
-      <h3 className="text-6xl">tailwind test</h3>
       <button onClick={handleClick}>test</button>
     </>
   );
