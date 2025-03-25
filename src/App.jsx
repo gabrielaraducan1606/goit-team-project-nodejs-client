@@ -1,7 +1,7 @@
 import React from "react";
 import ThemeToggle from "./components/themeToggle";
 import Welcome from "./pages/WelcomePage";
-import Registration from "./pages/RegistrationPage";
+import Registration from "./pages/AuthPage";
 import { useDispatch, useSelector } from "react-redux";
 import { selectBoards, selectUserData } from "./redux/selectors";
 import { fetchBoards, loginUser } from "./services/reduxServices";
