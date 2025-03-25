@@ -25,7 +25,7 @@ const Sidebar = ({ onOpenCreateBoard }) => {
       className="w-[40px] h-[36px] bg-primary rounded-md flex items-center justify-center"
       onClick={onOpenCreateBoard}
     >
-      <span className="text-black text-[30px] font-thin">+</span>
+      <span className="text-[30px] font-thin">+</span>
     </button>
   </div>
 
