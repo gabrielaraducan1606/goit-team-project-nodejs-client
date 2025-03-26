@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Welcome from "./pages/WelcomePage";
+import Registration from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import Board from "./pages/Board";
 
 const App = () => {
   return (
     <>
+      <Registration/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />}>
