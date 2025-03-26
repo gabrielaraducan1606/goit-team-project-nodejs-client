@@ -13,7 +13,7 @@ export const loginUser = createAsyncThunk(
     try {
       const response = await axios.post(`${BASE_URL}/auth/login`, userData);
       const { _id, name, email, avatarURL } = response.data.data.user;
-      cookies.set("token", response.data.data.token);
+      cookies.set("token", response.data.data.accessToken);
       return response.status === 200
         ? { id: _id, avatarURL, name, email }
         : null;
@@ -38,8 +38,17 @@ export const fetchBoards = createAsyncThunk(
 );
 
 
+// Fetching and populating the columns array in the state of the userSlice
+// This function should be called when the user clicks on a board in the sidebar or when the user creates a new column,edits a column or deletes a column
+export const fetchColumns = createAsyncThunk(
+  "user/fetchColumns",
+  async (boardId, { rejectWithValue }) => {
+    try {
+      const response = await apiClient.get(`/columns/${boardId}`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
-
-
-// Updates a board
-// 
