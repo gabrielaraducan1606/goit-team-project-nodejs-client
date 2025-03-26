@@ -1,6 +1,7 @@
 import React from "react";
 import ThemeToggle from "./components/themeToggle";
 import Welcome from "./pages/WelcomePage";
+import Registration from "./pages/AuthPage";
 import HomePage from "./pages/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +22,7 @@ const App = () => {
   };
   return (
     <>
+      <Registration/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Welcome />} />
@@ -29,7 +31,6 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-      <button onClick={handleClick}>test</button>
     </>
   );
 };
