@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../components/button";
 
 export default function RegistrationPage() {
   const [isRegister, setIsRegister] = useState(true);
@@ -12,19 +13,21 @@ export default function RegistrationPage() {
       >
         {/* Tab-uri Registration & Log In */}
         <div className="flex gap-4 justify-start mb-[40px]">
-        <button
-         className={`font-[Poppins] font-medium text-[18px] leading-[100%] tracking-[-2%] transition-colors duration-200 bg-transparent border-none outline-none ${
-         isRegister ? "text-white" : "text-white/30 hover:text-white/30"
-        }`}
+          <button
+            className={` text-[18px] transition-colors duration-200 cursor-pointer ${
+              isRegister ? "text-white" : "text-white/30 hover:text-white/30"
+            }`}
             style={{ width: "106px", height: "27px" }}
             onClick={() => setIsRegister(true)}
           >
             Registration
           </button>
           <button
-         className={`font-[Poppins] font-medium text-[18px] leading-[100%] tracking-[-2%] transition-transparent duration-200 bg-transparent border-none outline-none whitespace-nowrap ${
-         isRegister ? "text-white/30 bg-transparent/30 hover:text-white" : "text-white"
-        }`}è
+            className={`text-[18px] transition-transparent duration-200 cursor-pointer ${
+              isRegister
+                ? "text-white/30 bg-transparent/30 hover:text-white"
+                : "text-white"
+            }`}
             style={{ width: "51px", height: "27px" }}
             onClick={() => setIsRegister(false)}
           >
@@ -68,14 +71,11 @@ export default function RegistrationPage() {
           </div>
 
           {/* Buton */}
-          <button
-            className="w-full py-[14px] text-[#161616] bg-[#BEDBB0] rounded-md hover:bg-[#151515] hover:text-[#FFFFFF] transition text-center mt-[24px]"
-          >  {isRegister ? "Register Now" : "Log In Now"}
-          </button>
+          <Button variant="auth" type="submit">
+            {isRegister ? "Register Now" : "Log In Now"}
+          </Button>
         </form>
       </div>
     </div>
   );
 }
-
-

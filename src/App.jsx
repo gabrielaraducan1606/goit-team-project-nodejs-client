@@ -8,13 +8,13 @@ import Board from "./pages/Board";
 const App = () => {
   return (
     <>
-      <Registration/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />}>
             <Route path=":boardId" element={<Board />} />
           </Route>
           <Route path="/welcome" element={<Welcome />} />
+          <Route path="/auth" element={<Registration />} />
         </Routes>
       </BrowserRouter>
     </>

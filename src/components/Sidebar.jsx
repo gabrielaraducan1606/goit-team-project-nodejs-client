@@ -5,8 +5,9 @@ import LogoComponent from "./LogoComponent";
 import HelpSection from "./HelpSection";
 import LogoutButton from "./LogoutButton";
 import { Link } from "react-router";
+import Button from "./button";
 
-const Sidebar = ({ onOpenCreateBoard }) => {
+const Sidebar = () => {
   const boards = useSelector(selectBoards);
 
   return (
@@ -22,12 +23,9 @@ const Sidebar = ({ onOpenCreateBoard }) => {
         <span className="font-poppins w-[76px] text-title text-[14px] font-medium">
           Create a new board
         </span>
-        <button
-          className="w-[40px] h-[36px] bg-primary rounded-md flex items-center justify-center"
-          onClick={onOpenCreateBoard}
-        >
-          <span className="text-[30px] font-thin">+</span>
-        </button>
+        <Button variant="small">
+          <span className="text-[30px]">+</span>
+        </Button>
       </div>
 
       {/* Lista de Dashboard-uri */}
@@ -40,8 +38,8 @@ const Sidebar = ({ onOpenCreateBoard }) => {
           >
             <span className="text-text">{board.title}</span>
             <div className="flex space-x-2">
-              <button className="text-blue-500">✏️</button>
-              <button className="text-red-500">🗑️</button>
+              <Button variant={"icon"}>✏️</Button>
+              <Button variant={"icon"}>🗑️</Button>
             </div>
           </Link>
         ))}
