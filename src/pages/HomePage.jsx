@@ -4,7 +4,6 @@ import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchBoards } from "../services/reduxServices";
-
 const HomePage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,5 +19,5 @@ const HomePage = () => {
     </div>
   );
 };
-
+// daca nu ai asta nu ai facut update
 export default HomePage;

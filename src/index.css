@@ -82,6 +82,14 @@
   h6 {
     @apply text-title;
   }
+
+  h4{
+    @apply text-lg
+  }
+
+  input {
+    @apply w-full py-3.5 px-5 rounded-md text-input-text ring-1 ring-input focus:ring-input-active outline-0;
+  }
 }
 
 .card {
