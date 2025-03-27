@@ -19,5 +19,5 @@ const HomePage = () => {
     </div>
   );
 };
-
+// daca nu ai asta nu ai facut update
 export default HomePage;
