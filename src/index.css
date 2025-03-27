@@ -19,6 +19,9 @@
   --color-icon: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #bedbb0;
+  --color-boards-hover: #00000033;
+  --color-small-btn-primary: #bedbb0;
+  --color-small-btn-secondary: #9dc888;
 }
 
 [data-theme="dark"] {
@@ -39,6 +42,9 @@
   --color-icon: #ffffff80;
   --color-icon-selected: #ffffff;
   --color-icon-active: #bedbb0;
+  --color-boards-hover: #ffffff33;
+  --color-small-btn-primary: #bedbb0;
+  --color-small-btn-secondary: #9dc888;
 }
 
 [data-theme="violet"] {
@@ -59,11 +65,14 @@
   --color-icon: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #5255bc;
+  --color-boards-hover: #ffffff33;
+  --color-small-btn-primary: #d6d8ff;
+  --color-small-btn-secondary: #979cea;
 }
 
 @layer base {
   body {
-    @apply bg-background text-text;
+    @apply bg-background text-text font-medium;
   }
   h1,
   h2,
@@ -72,9 +81,6 @@
   h5,
   h6 {
     @apply text-title;
-  }
-  button {
-    @apply bg-primary hover:bg-secondary text-btn-text hover:cursor-pointer rounded p-4 font-semibold;
   }
 }
 

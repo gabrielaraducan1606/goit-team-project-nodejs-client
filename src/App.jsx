@@ -1,18 +1,20 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Welcome from "./pages/WelcomePage";
-import ModalController from "./components/ModalController";
 
 const App = () => {
   return (
-    <Router>
-      <ModalController />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/welcome" element={<Welcome />} />
-      </Routes>
-    </Router>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />}>
+            <Route path=":boardId" element={<Board />} />
+          </Route>
+          <Route path="/welcome" element={<Welcome />} />
+          <Route path="/auth" element={<Registration />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 

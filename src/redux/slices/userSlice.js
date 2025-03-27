@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchBoards, loginUser } from "../../services/reduxServices";
+import {
+  fetchBoards,
+  fetchColumns,
+  loginUser,
+} from "../../services/reduxServices";
 
 const initialState = {
   userData: {
@@ -47,6 +51,18 @@ export const userSlice = createSlice({
         state.isFetching = false;
         state.error = action.payload;
       })
+      .addCase(fetchColumns.pending, (state) => {
+        state.isFetching = true;
+        state.error = null;
+      })
+      .addCase(fetchColumns.fulfilled, (state, action) => {
+        state.isFetching = false;
+        state.columns = action.payload;
+      })
+      .addCase(fetchColumns.rejected, (state, action) => {
+        state.isFetching = false;
+        state.error = action.payload;
+      });
   },
 });
 
