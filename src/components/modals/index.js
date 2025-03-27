@@ -1,11 +1,21 @@
-export { default as Modal } from "./Modal";
-export { default as ModalOverlay } from "./ModalOverlay";
-export { default as NewBoardModal } from "./NewBoardModal";
-export { default as EditBoardModal } from "./EditBoardModal";
-export { default as HelpModal } from "./HelpModal";
-export { default as AddCardModal } from "./AddCardModal";
-export { default as EditCardModal } from "./EditCardModal";
-export { default as AddColumnModal } from "./AddColumnModal";
-export { default as EditColumnModal } from "./EditColumnModal";
-export { default as EditProfileModal } from "./EditProfileModal";
-export { default as FiltersModal } from "./FiltersModal";
+import Modal from "./Modal";
+import NewBoardModal from "./NewBoardModal";
+import EditBoardModal from "./EditBoardModal";
+import HelpModal from "./HelpModal";
+import AddCardModal from "./AddCardModal";
+import EditCardModal from "./EditCardModal";
+import AddColumnModal from "./AddColumnModal";
+import EditColumnModal from "./EditColumnModal";
+import FiltersModal from "./FiltersModal";
+
+export {
+  Modal,
+  NewBoardModal,
+  EditBoardModal,
+  HelpModal,
+  AddCardModal,
+  EditCardModal,
+  AddColumnModal,
+  EditColumnModal,
+  FiltersModal,
+};

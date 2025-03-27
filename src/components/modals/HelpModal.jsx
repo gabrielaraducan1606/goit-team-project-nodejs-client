@@ -15,32 +15,27 @@ const HelpModal = ({ isOpen, onClose, onSendHelp }) => {
     <Modal isOpen={isOpen} onClose={onClose} title="Need help">
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="sr-only">Email address</label>
           <input
             type="email"
             id="email"
             name="email"
-            className="w-full bg-[#1F1F1F] border border-gray-700 rounded p-2"
+            className="w-full bg-input border border-input-active rounded p-2 text-input-text"
             placeholder="Email address"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="sr-only">Comment</label>
+        <div className="mb-6">
           <textarea
             id="comment"
             name="comment"
             rows="4"
-            className="w-full bg-[#1F1F1F] border border-gray-700 rounded p-2"
+            className="w-full bg-input border border-input-active rounded p-2 text-input-text"
             placeholder="Comment"
           ></textarea>
         </div>
 
-        <div className="flex justify-center mt-6">
-          <button
-            type="submit"
-            className="bg-primary hover:bg-secondary text-btn-text font-medium rounded-md py-2 px-4 w-full"
-          >
+        <div className="flex justify-center">
+          <button type="submit" className="w-full h-10 rounded">
             Send
           </button>
         </div>

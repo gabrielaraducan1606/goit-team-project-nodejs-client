@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { createPortal } from "react-dom";
 
 const Modal = ({ isOpen, onClose, title, children }) => {
   useEffect(() => {
@@ -22,7 +23,7 @@ const Modal = ({ isOpen, onClose, title, children }) => {
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-black bg-opacity-50"
       onClick={onClose}
@@ -55,7 +56,8 @@ const Modal = ({ isOpen, onClose, title, children }) => {
         </div>
         <div className="mt-4">{children}</div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

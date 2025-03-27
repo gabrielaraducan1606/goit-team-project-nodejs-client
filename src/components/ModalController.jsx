@@ -1,6 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { closeModal } from "../redux/slices/modalSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   NewBoardModal,
   EditBoardModal,
@@ -9,24 +8,30 @@ import {
   EditCardModal,
   AddColumnModal,
   EditColumnModal,
-  EditProfileModal,
   FiltersModal,
 } from "./modals";
 
 const ModalController = () => {
-  const modalsState = useSelector((state) => state.modals);
-  const activeModal = modalsState?.activeModal;
-  const modalData = modalsState?.modalData;
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  // Extrage tipul modalului și datele din URL
+  const queryParams = new URLSearchParams(location.search);
+  const modalType = queryParams.get("modal");
+  const modalData = queryParams.get("data")
+    ? JSON.parse(decodeURIComponent(queryParams.get("data")))
+    : null;
 
+  // Funcția pentru închiderea modalului
   const handleCloseModal = () => {
-    dispatch(closeModal());
+    const newURL = new URL(window.location);
+    newURL.searchParams.delete("modal");
+    newURL.searchParams.delete("data");
+    navigate(newURL.pathname + newURL.search);
   };
 
-  if (!activeModal) return null;
-
-  switch (activeModal) {
+  // Deschide modalul în funcție de parametrul din URL
+  switch (modalType) {
     case "newBoard":
       return (
         <NewBoardModal
@@ -107,18 +112,6 @@ const ModalController = () => {
             handleCloseModal();
           }}
           columnData={modalData}
-        />
-      );
-    case "editProfile":
-      return (
-        <EditProfileModal
-          isOpen={true}
-          onClose={handleCloseModal}
-          onUpdateProfile={(profileData) => {
-            console.log("Updating profile:", profileData);
-            handleCloseModal();
-          }}
-          userData={modalData}
         />
       );
     case "filters":
