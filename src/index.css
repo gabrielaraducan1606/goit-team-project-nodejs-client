@@ -19,6 +19,11 @@
   --color-icon: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #bedbb0;
+  --color-plus-icon: #161616;
+  --color-low: #8FA1D0;
+  --color-medium:#E09CB5;
+  --color-high: #BEDBB0;
+  --color-without:#FFFFFF4D;
 }
 
 [data-theme="dark"] {
@@ -39,6 +44,11 @@
   --color-icon: #ffffff80;
   --color-icon-selected: #ffffff;
   --color-icon-active: #bedbb0;
+  --color-plus-icon: #ffffff;
+  --color-low: #8FA1D0;
+  --color-medium:#E09CB5;
+  --color-high: #BEDBB0;
+  --color-without:#FFFFFF4D;
 }
 
 [data-theme="violet"] {
@@ -59,6 +69,11 @@
   --color-icon: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #5255bc;
+  --color-plus-icon: #5255bc;
+  --color-low: #8FA1D0;
+  --color-medium:#E09CB5;
+  --color-high: #BEDBB0;
+  --color-without:#FFFFFF4D;
 }
 
 @layer base {
@@ -85,3 +100,4 @@
 .modal {
   @apply bg-modal-bg rounded p-6;
 }
+
