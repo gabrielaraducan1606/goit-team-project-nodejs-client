@@ -1,12 +1,96 @@
-# React + Vite
+# GOIT Team Project - Node.js Task Manager Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the client for the Task Manager application built with **React.js** and styled with **TailwindCSS**. It includes full support for authentication, board/column/card management, and theme customization using static image assets.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- **JWT Authentication** (Login / Register)
+- **Boards** with title, icon, background image
+- **Columns** per board
+- **Cards** per column with priorities, deadlines
+- **Static assets serving** (backgrounds & icons)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Installation
+
+1. **Clone the project:**
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+2. **Install dependencies:**
+
+```bash
+npm install
+```
+
+3. **Create a `.env.local` file:**
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+---
+
+---
+
+
+## ▶️ Start Application
+
+### 🔹 **In development:**
+
+```bash
+npm run dev
+```
+
+### 🔹 **In production:**
+
+```bash
+npm start
+```
+
+The app will start at: `http://localhost:5173/`
+
+---
+
+## 📂 Project Structure
+
+```bash
+GOIT-TASK-MANAGER-CLIENT/
+├── public/
+│      ├── images/
+│      └── svg/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │     └── themeToggle.jsx
+│   ├── pages/
+│   │     └──WelcomePage.jsx
+│   ├── redux/
+│   │     └── slices/
+│   │     │     └── userSlice.js
+│   │     ├── selectors.js
+│   │     └── store.js
+│   ├── services/
+│   │     ├── reduxServices.js
+│   │     └── userServices.js
+│   ├── utils/
+│   │     ├── apiClient.js
+│   │     ├── cookies.js
+│   │     └── notUsed.js
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .env.local
+├── index.html
+├── package.json
+├── package-lock.json
+├── eslint.config.js
+├── vite.config.js
+└── README.md
+```
+
+---

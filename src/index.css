@@ -19,6 +19,9 @@
   --color-icon: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #bedbb0;
+  --color-boards-hover: #00000033;
+  --color-small-btn-primary: #bedbb0;
+  --color-small-btn-secondary: #9dc888;
   --color-plus-icon: #161616;
   --color-low: #8FA1D0;
   --color-medium:#E09CB5;
@@ -44,6 +47,9 @@
   --color-icon: #ffffff80;
   --color-icon-selected: #ffffff;
   --color-icon-active: #bedbb0;
+  --color-boards-hover: #ffffff33;
+  --color-small-btn-primary: #bedbb0;
+  --color-small-btn-secondary: #9dc888;
   --color-plus-icon: #ffffff;
   --color-low: #8FA1D0;
   --color-medium:#E09CB5;
@@ -69,6 +75,9 @@
   --color-icon: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #5255bc;
+  --color-boards-hover: #ffffff33;
+  --color-small-btn-primary: #d6d8ff;
+  --color-small-btn-secondary: #979cea;
   --color-plus-icon: #5255bc;
   --color-low: #8FA1D0;
   --color-medium:#E09CB5;
@@ -78,7 +87,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-text;
+    @apply bg-background text-text font-medium;
   }
   h1,
   h2,
@@ -88,8 +97,13 @@
   h6 {
     @apply text-title;
   }
-  button {
-    @apply bg-primary hover:bg-secondary text-btn-text hover:cursor-pointer rounded p-4 font-semibold;
+
+  h4{
+    @apply text-lg
+  }
+
+  input {
+    @apply w-full py-3.5 px-5 rounded-md text-input-text ring-1 ring-input focus:ring-input-active outline-0;
   }
 }
 
