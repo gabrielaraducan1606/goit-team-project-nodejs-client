@@ -26,7 +26,7 @@
   --color-low: #8FA1D0;
   --color-medium:#E09CB5;
   --color-high: #BEDBB0;
-  --color-without:#FFFFFF4D;
+  --color-without:#1616164D;
 }
 
 [data-theme="dark"] {
@@ -82,7 +82,7 @@
   --color-low: #8FA1D0;
   --color-medium:#E09CB5;
   --color-high: #BEDBB0;
-  --color-without:#FFFFFF4D;
+  --color-without:#1616164D;
 }
 
 @layer base {

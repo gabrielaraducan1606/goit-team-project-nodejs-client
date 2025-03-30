@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import plus from '../../assets/plus.svg';
-import editIcon from '../../assets/edit.svg';
-import deleteIcon from '../../assets/delete.svg';
-import arrow from '../../assets/arrow.svg';
+import plus from '../assets/plus.svg';
+import editIcon from '../assets/edit.svg';
+import deleteIcon from '../assets/delete.svg';
+import arrow from '../assets/arrow.svg';
 
 const Dashboard = () => {
   const [columns, setColumns] = useState([]);
@@ -132,21 +132,21 @@ const Dashboard = () => {
 
   const getPriorityBorderColor = (priority) => {
     switch(priority) {
-      case 'high': return 'border-red-500';
-      case 'medium': return 'border-yellow-500';
-      case 'low': return 'border-green-500';
-      case 'without': return 'border-gray-300';
-      default: return 'border-gray-300';
+      case 'high': return 'border-high';
+      case 'medium': return 'border-medium';
+      case 'low': return 'border-low';
+      case 'without': return 'border-without';
+      default: return 'border-without';
     }
   };
 
   const getPriorityColorClass = (priority) => {
     switch(priority) {
-      case 'high': return 'bg-red-500';
-      case 'medium': return 'bg-yellow-500';
-      case 'low': return 'bg-green-500';
-      case 'without': return 'bg-gray-300';
-      default: return 'bg-gray-300';
+      case 'high': return 'bg-high';
+      case 'medium': return 'bg-medium';
+      case 'low': return 'bg-low';
+      case 'without': return 'bg-without';
+      default: return 'bg-without';
     }
   };
 
@@ -193,26 +193,31 @@ const Dashboard = () => {
                   <p className=" text-title-[12px] mt-[8px] mb-2 overflow-hidden text-ellipsis whitespace-nowrap">{card.description}</p>
                   <div>
                   <div className="w-[290px] h-[1px] bg-text"></div>
-                  
+                  <div className='flex justify-between gap-5 mt-[14px]'>
                   {card.priority && (
+                    <div>
+                      <p className='text-[10px] font-[400] '>Priority</p>
                       <div className="flex items-center gap-2 my-2">
-                        <span className={`w-4 h-4 rounded-full ${getPriorityColorClass(card.priority)}`}></span>
-                        <span className="text-sm capitalize">{card.priority}</span>
-                      </div>
+                        
+                        <span className={`w-[12px] h-[12px] rounded-full ${getPriorityColorClass(card.priority)}`}></span>
+                        <span className="text-[12px] fornt-[400] capitalize">{card.priority}</span>
+                      </div></div>
                     )}
 
             <div className='flex flex-col '>
-                <p>Deadline: </p>
-                  {card.deadline && <p className="text-sm text-text mb-4">{card.deadline}</p>}
+                <p className='text-[10px] font-[400] mb-[8px]'>Deadline: </p>
+                  {card.deadline && <p className="text-[12px] font-[400] text-text mb-4">
+  {new Date(card.deadline).toLocaleDateString('en-GB')}
+</p>}
                   </div>
                   
-                  <div className="flex gap-2">
+                  <div className="flex gap-[8px]">
 
                   <button onClick={() => handleDeleteCard(card.id)} className="bg-transparent">
                     <img 
     src={arrow} 
     alt="arrow" 
-    className="w-[13px] h-[13px] opacity-50 hover:opacity-100" 
+    className="w-[16px] h-[16px] opacity-50 hover:opacity-100" 
     style={{ filter: 'brightness(0) invert(1)' }} 
   />
                     </button>
@@ -221,7 +226,7 @@ const Dashboard = () => {
                     <img 
     src={editIcon} 
     alt="edit" 
-    className="w-[13px] h-[13px] opacity-50 hover:opacity-100" 
+    className="w-[16px] h-[16px] opacity-50 hover:opacity-100" 
     style={{ filter: 'brightness(0) invert(1)' }} 
   />
                     </button>
@@ -230,11 +235,11 @@ const Dashboard = () => {
                     <img 
     src={deleteIcon} 
     alt="delete" 
-    className="w-[13px] h-[13px] opacity-50 hover:opacity-100" 
+    className="w-[16px] h-[16px] opacity-50 hover:opacity-100" 
     style={{ filter: 'brightness(0) invert(1)' }} 
   />
                     </button>
-                  </div>
+                  </div></div>
                   </div>
                 </div>
               ))}
@@ -318,7 +323,7 @@ const Dashboard = () => {
               type="date"
               value={cardData.deadline}
               onChange={(e) => setCardData({ ...cardData, deadline: e.target.value })}
-              className="fle flox-col p-2 border border-text rounded mb-4 w-full"
+              className="flex flox-col p-2 border border-text rounded mb-4 w-full"
             />
 
 <div className="flex gap-4 mb-4">
@@ -333,7 +338,7 @@ const Dashboard = () => {
                     className="hidden"
                   />
                   <span 
-                    className={`w-4 h-4 rounded-full ${getPriorityColorClass(priority)} cursor-pointer`}
+                    className={` w-4 h-4 rounded-full ${getPriorityColorClass(priority)} cursor-pointer`}
                   ></span>
                   <span className="text-sm capitalize">{priority}</span>
                 </label>
