@@ -6,7 +6,7 @@ import { registerUser } from "../services/userServices";
 import { loginUser } from "../services/reduxServices";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import { selectIsLoggedIn } from "../redux/selectors";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export default function RegistrationPage() {
   const [isRegister, setIsRegister] = useState(true);
@@ -14,8 +14,11 @@ export default function RegistrationPage() {
   const dispatch = useDispatch();
   const { register, handleSubmit, reset } = useForm();
   const isLoggedIn = useSelector(selectIsLoggedIn);
+  const navigate = useNavigate();
   useEffect(() => {
-      console.log(isLoggedIn);
+    if (isLoggedIn) {
+      navigate("/");
+    }
   }, [isLoggedIn]);
 
   const authUser = async (data) => {
