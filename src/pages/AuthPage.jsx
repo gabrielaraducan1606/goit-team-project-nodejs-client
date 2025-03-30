@@ -1,9 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import Button from "../components/button";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser } from "../services/userServices";
+import { loginUser } from "../services/reduxServices";
+import { ToastContainer, toast, Slide } from "react-toastify";
+import { selectIsLoggedIn } from "../redux/selectors";
+import { useNavigate } from "react-router";
 
 export default function RegistrationPage() {
   const [isRegister, setIsRegister] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const { register, handleSubmit, reset } = useForm();
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  }, [isLoggedIn]);
+
+  const authUser = async (data) => {
+    switch (isRegister) {
+      case true: {
+        const response = await registerUser(data);
+        if (response === 201) {
+          setIsRegister(false);
+          toast.success("Registration successful!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+            theme: "light",
+            transition: Slide,
+          });
+        }
+        reset();
+        break;
+      }
+      default:
+        {
+          const { email, password } = data;
+          dispatch(loginUser({ email, password }));
+          reset();
+        }
+        break;
+    }
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#F6F6F7] to-[#BEDBB0] p-4">
@@ -36,10 +83,11 @@ export default function RegistrationPage() {
         </div>
 
         {/* Formular */}
-        <form className="space-y-[15px]">
+        <form className="space-y-[15px]" onSubmit={handleSubmit(authUser)}>
           {isRegister && (
             <div>
               <input
+                {...register("name")}
                 type="text"
                 placeholder="Enter your name"
                 className="w-full p-[14px] pl-[18px] bg-[#1F1F1F] text-white rounded-md border border-[#BEDBB0] focus:outline-none"
@@ -49,6 +97,7 @@ export default function RegistrationPage() {
 
           <div>
             <input
+              {...register("email")}
               type="email"
               placeholder="Enter your email"
               className="w-full p-[14px] pl-[18px] bg-[#1F1F1F] text-white rounded-md border border-[#BEDBB0] focus:outline-none"
@@ -58,6 +107,7 @@ export default function RegistrationPage() {
           {/* Input parolă cu icon */}
           <div className="relative">
             <input
+              {...register("password")}
               type={showPassword ? "text" : "password"}
               placeholder="Create a password"
               className="w-full p-[14px] pl-[18px] pr-[40px] bg-[#1F1F1F] text-white rounded-md border border-[#BEDBB0] focus:outline-none"
@@ -75,6 +125,7 @@ export default function RegistrationPage() {
             {isRegister ? "Register Now" : "Log In Now"}
           </Button>
         </form>
+        <ToastContainer />
       </div>
     </div>
   );
