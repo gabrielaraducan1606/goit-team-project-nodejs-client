@@ -7,13 +7,13 @@ const buttonStyles = tv({
   variants: {
     variant: {
       primary:
-        "bg-primary hover:bg-secondary text-text w-full h-[3.125rem] flex items-center justify-center",
+        "bg-primary hover:bg-secondary text-btn-text w-full h-[3.125rem] flex items-center justify-center font-semibold",
       secondary:
-        "bg-card-bg hover:bg-secondary text-text w-full h-[3.125rem] flex items-center justify-center",
-      auth: "bg-[#BEDBB0] hover:bg-[#9DC888] text-[#161616] w-full h-[3.125rem] flex items-center justify-center",
+        "bg-card-bg hover:bg-secondary text-title w-[21rem] h-[3.125rem] flex items-center justify-center font-semibold",
+      auth: "bg-[#BEDBB0] hover:bg-[#9DC888] text-[#161616] w-full h-[3.125rem] flex items-center justify-center font-semibold",
       icon: "bg-transparent w-fit h-fit p-0 m-0",
       small:
-        "bg-small-btn-primary hover:bg-small-btn-secondary text-text w-[2.5rem ] h-[2.25rem] aspect-[1/1] flex items-center justify-center",
+        "bg-small-btn-primary hover:bg-small-btn-secondary text-btn-text w-[2.5rem ] h-[2.25rem] aspect-[1/1] flex items-center justify-center font-semibold",
     },
     defaultVariants: {
       variant: "primary",

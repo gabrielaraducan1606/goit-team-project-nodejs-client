@@ -10,7 +10,6 @@ const initialState = {
     id: null,
     name: null,
     email: null,
-    token: null,
     avatarURL: null,
   },
   boards: [],
@@ -23,7 +22,17 @@ const initialState = {
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    logOut: (state) => {
+      state.userData.avatarURL = null;
+      state.userData.email = null;
+      state.userData.id = null;
+      state.boards = [];
+      state.columns = [];
+      state.isFetching=
+      state.isLoggedIn = false;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {

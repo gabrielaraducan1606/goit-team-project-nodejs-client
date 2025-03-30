@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 export default function Welcome() {
   return (
@@ -18,18 +19,18 @@ export default function Welcome() {
           Pro - Don't wait, start achieving your goals now!
         </p>
         <div className="mt-6 flex flex-col gap-3 w-full justify-center items-center">
-          <a
-            href="/signup"
+          <Link
+            to={"/auth"}
             className="w-[21.5rem] h-[3rem] flex items-center justify-center bg-[#161616] text-white rounded-md text-sm font-semibold transition"
           >
             Registration
-          </a>
-          <a
-            href="/signin"
+          </Link>
+          <Link
+            to={"/auth"}
             className=" flex items-center justify-center bg-transparent text-[#161616] text-sm font-semibold transition"
           >
             Log In
-          </a>
+          </Link>
         </div>
       </div>
     </div>

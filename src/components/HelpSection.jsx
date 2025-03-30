@@ -1,16 +1,14 @@
 import { useState } from "react";
-import Modal from "./Modal";
 import Button from "./button";
+import BackupModal from "./backupModal";
 
 const HelpSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const [help, setHelpOpen] = useState(false);
 
-  const handleSend = () => {
+  // const handleSend = () => {
     // console.log("Send Request", { email, message });
     // setIsModalOpen(false);
-  };
+  // };
 
   return (
     <div className="p-4 rounded-lg bg-background text-text">
@@ -26,34 +24,38 @@ const HelpSection = () => {
         <img src="/svg/help.svg" fill="red" alt="help-symbol" />
         <span
           className="text-text font-medium cursor-pointer"
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => setHelpOpen(true)}
         >
           Need help?
         </span>
       </div>
 
-      {/* Modalul reutilizabil */}
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <h3 className="text-black font-bold mb-6">Need Help</h3>
-        <input
-          type="email"
-          placeholder="Email address"
-          className="w-full p-2 border border-gray-300 rounded mb-4 placeholder-gray-500 text-black"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <textarea
-          placeholder="Comment"
-          className="w-full p-2 border border-gray-300 rounded mb-4 placeholder-gray-500 text-black"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
-        <div className="flex justify-center mt-4">
-          <Button variant={"primary"} onClick={handleSend}>
+    
+      {/* NEED HELP MODAL */}
+      <BackupModal
+        size={"lg"}
+        open={help}
+        closeModal={() => setHelpOpen(false)}
+      >
+        <form className=" flex flex-col gap-6">
+          <h4>Need Help</h4>
+          <div className="flex flex-col gap-3.5">
+            <input
+              type="email"
+              className="outline-0"
+              placeholder="Email address"
+              name="email"
+            ></input>
+            <textarea
+              className="w-full h-32 py-3.5 px-5 rounded-md text-input-text ring-1 ring-input focus:ring-input-active outline-0"
+              placeholder="Comment"
+            ></textarea>
+          </div>
+          <Button type="submit" variant={"primary"}>
             Send
           </Button>
-        </div>
-      </Modal>
+        </form>
+      </BackupModal>
     </div>
   );
 };
