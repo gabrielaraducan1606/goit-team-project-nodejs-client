@@ -16,12 +16,16 @@
   --color-input-active: #bedbb0;
   --color-placeholder: #16161680;
   --color-input-text: #161616;
-  --color-icon: #16161680;
+  --color-icon-color: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #bedbb0;
   --color-boards-hover: #00000033;
   --color-small-btn-primary: #bedbb0;
   --color-small-btn-secondary: #9dc888;
+  --color-create: #ffffff;
+  --color-create-bg: #000000;
+  --color-create-col: #ffffff;
+  --color-create-col-bg: #000000;
 }
 
 [data-theme="dark"] {
@@ -39,12 +43,16 @@
   --color-input-active: #bedbb0;
   --color-placeholder: #ffffff80;
   --color-input-text: #ffffff;
-  --color-icon: #ffffff80;
+  --color-icon-color: #ffffff80;
   --color-icon-selected: #ffffff;
   --color-icon-active: #bedbb0;
   --color-boards-hover: #ffffff33;
   --color-small-btn-primary: #bedbb0;
   --color-small-btn-secondary: #9dc888;
+  --color-create: #ffffff;
+  --color-create-bg: #000000;
+  --color-create-col: #000000;
+  --color-create-col-bg: #ffffff;
 }
 
 [data-theme="violet"] {
@@ -62,12 +70,16 @@
   --color-input-active: #5255bc;
   --color-placeholder: #16161680;
   --color-input-text: #161616;
-  --color-icon: #16161680;
+  --color-icon-color: #16161680;
   --color-icon-selected: #161616;
   --color-icon-active: #5255bc;
   --color-boards-hover: #ffffff33;
   --color-small-btn-primary: #d6d8ff;
   --color-small-btn-secondary: #979cea;
+  --color-create: #000000;
+  --color-create-bg: #ffffff;
+  --color-create-col: #ffffff;
+  --color-create-col-bg: #5255bc;
 }
 
 @layer base {
@@ -83,12 +95,15 @@
     @apply text-title;
   }
 
-  h4{
-    @apply text-lg
+  h4 {
+    @apply text-lg;
   }
 
   input {
-    @apply w-full py-3.5 px-5 rounded-md text-input-text ring-1 ring-input focus:ring-input-active outline-0;
+    @apply w-full py-3.5 px-5 rounded-md text-input-text ring-1 ring-input focus:ring-input-active;
+  }
+  p {
+    @apply text-text;
   }
 }
 
@@ -98,4 +113,11 @@
 
 .modal {
   @apply bg-modal-bg rounded p-6;
+}
+
+.create {
+  @apply text-create bg-create-bg size-7 flex justify-center items-center text-2xl rounded mr-1;
+}
+.create-col {
+  @apply text-create-col bg-create-col-bg size-7 flex justify-center items-center text-2xl rounded mr-4;
 }

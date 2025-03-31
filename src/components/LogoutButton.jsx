@@ -1,10 +1,6 @@
-import { useDispatch } from "react-redux";
-import { loginUser } from "../services/reduxServices";
-
 const LogoutButton = () => {
-  const dispatch = useDispatch();
   const handleLogout = () => {
-    dispatch(loginUser({ email: "alex@email.com", password: "123123123" }));
+    
   };
 
   return (

@@ -22,15 +22,15 @@ const ThemeToggle = () => {
 
   return (
     <div>
-      <select className="hover:cursor-pointer group"
+      <select className="hover:cursor-pointer group bg-background rounded-xl p-2 ring-1 ring-primary"
         onChange={(e) => {
           setTheme(e.target.value);
         }}
       >
-        <option value={system}>System</option>
-        <option value={"dark"}>Dark</option>
-        <option value={"light"}>Light</option>
-        <option value={"violet"}>Violet</option>
+        <option className="bg-background" value={system}>System</option>
+        <option className="bg-background" value={"dark"}>Dark</option>
+        <option className="bg-background" value={"light"}>Light</option>
+        <option className="bg-background" value={"violet"}>Violet</option>
       </select>
     </div>
   );
