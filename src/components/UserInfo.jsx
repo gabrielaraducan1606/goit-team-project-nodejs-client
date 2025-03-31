@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { selectUserData } from "../redux/selectors";
 import BackupModal from "./backupModal";
 import ThemedAvatar from "./themedAvatar";
-import lightImage from '/images/user-light.png'
 
 const UserInfo = () => {
   // Accesăm datele utilizatorului din Redux

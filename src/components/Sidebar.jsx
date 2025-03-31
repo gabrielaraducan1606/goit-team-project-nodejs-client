@@ -102,7 +102,7 @@ const Sidebar = () => {
                     id={icon.id}
                     href={icon.href}
                     className={
-                      "size-5 stroke-icon peer-checked:stroke-icon-selected hover:stroke-icon-selected"
+                      "size-5 stroke-icon-color peer-checked:stroke-icon-selected hover:stroke-icon-selected"
                     }
                   />
                 </label>
