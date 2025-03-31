@@ -29,8 +29,8 @@ export const backgrounds = [
 ];
 
 export const labels = [
-  { hex: "#8FA1D0", name: "blue" },
-  { hex: "#E09CB5", name: "pink" },
-  { hex: "#BEDBB0", name: "green" },
-  { hex: "#6f6f6f", name: "gray" },
+  { hex: "#E09CB5", name: "medium" },
+  { hex: "#8FA1D0", name: "low" },
+  { hex: "#BEDBB0", name: "high" },
+  { hex: "#6f6f6f", name: "none" },
 ];

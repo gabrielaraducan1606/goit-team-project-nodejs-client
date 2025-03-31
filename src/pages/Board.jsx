@@ -21,22 +21,30 @@ const Board = () => {
     }
   }, [boardId, dispatch]);
 
+  const boardName = () => {
+    const board = boards.find((board) => board._id === boardId);
+    return board.title;
+  };
+
   return (
     <>
       {boards.length > 0 ? (
-        <div className="flex gap-10 w-full">
-          {columns.map((column) => {
-            return (
-              <Column
-                key={column._id}
-                columnId={column._id}
-                title={column.title}
-              />
-            );
-          })}
-          <Button variant={"secondary"}>
-            <span className="create-col">+</span>Add another column
-          </Button>
+        <div className="px-5 ">
+          <h4 className="my-2">{boardName()}</h4>
+          <div className="flex gap-10 w-full  overflow-x-scroll">
+            {columns.map((column) => {
+              return (
+                <Column
+                  key={column._id}
+                  columnId={column._id}
+                  title={column.title}
+                />
+              );
+            })}
+            <Button variant={"secondary"}>
+              <span className="create-col">+</span>Add another column
+            </Button>
+          </div>{" "}
         </div>
       ) : (
         <p className="text-center">
