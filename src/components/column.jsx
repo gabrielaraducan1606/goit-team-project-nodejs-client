@@ -1,18 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { fetchCards } from "../services/userServices";
+import { deleteColumn, fetchCards } from "../services/userServices";
 import Button from "./button";
 import BackupModal from "./backupModal";
 import { labels } from "../utils/arrays";
 import CustomCard from "./customCard";
 import CustomSvg from "./customSvg";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { fetchColumns } from "../services/reduxServices";
 
 const Column = ({ columnId, title }) => {
   const [cards, setCards] = useState([]);
   const [addCard, setAddCard] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
+  const [editColumn, setEditColumn] = useState(false);
+  // const { register, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+
   const handleChange = (item) => {
     setSelectedValue(item);
   };
+
+  // const editCol= async (data)=>{
+  //   const respones = await
+  // }
+
+  const handelDelete = async () => {
+    const response = await deleteColumn(columnId);
+    if (response === 204) {
+      dispatch(fetchColumns);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       const respones = await fetchCards(columnId);
@@ -23,16 +42,16 @@ const Column = ({ columnId, title }) => {
 
   return (
     <div className="w-[21rem] flex flex-col overflow-y-scroll gap-5 max-h-full">
-      <div className="flex w-full h-fit bg-card-bg rounded-lg p-4">
+      <div className="flex w-full h-fit bg-card-bg rounded-lg gap-4 p-4">
         <h4 className="grow">{title}</h4>
-        <Button variant={"icon"}>
+        <Button variant={"icon"} onClick={() => setEditColumn(true)}>
           <CustomSvg
             href={"/svg/general-use-icons.svg"}
             id={"pencil"}
             className={"size-5"}
           />
         </Button>
-        <Button variant={"icon"}>
+        <Button variant={"icon"} onClick={handelDelete}>
           <CustomSvg
             href={"/svg/general-use-icons.svg"}
             id={"trash"}
@@ -43,7 +62,7 @@ const Column = ({ columnId, title }) => {
       {cards.map((card) => {
         return (
           <CustomCard
-            key={card.id}
+            key={card._id}
             title={card.title}
             description={card.description}
             priority={card.priority}
@@ -118,6 +137,28 @@ const Column = ({ columnId, title }) => {
           </div>
           <Button variant={"primary"} type="submit">
             <span className="create">+</span>Add
+          </Button>
+        </form>
+      </BackupModal>
+
+      {/* EDIt COLUMN */}
+      <BackupModal
+        size={"md"}
+        open={editColumn}
+        closeModal={() => setEditColumn(false)}
+      >
+        <h4>Edit column</h4>
+        <form className=" flex flex-col gap-6">
+          <input
+            type="text"
+            className="outline-0"
+            placeholder="Title"
+            name="title"
+            defaultValue={title}
+            {...register("title")}
+          />
+          <Button variant={"primary"} type="submit">
+            <span className="create">+</span>Edit
           </Button>
         </form>
       </BackupModal>

@@ -4,7 +4,7 @@ import UserInfo from "./UserInfo";
 
 const Header = () => {
   return (
-    <header className="flex justify-end bg-top-bar gap-[14px] items-center p-4" >
+    <header className="flex w-full justify-end bg-top-bar gap-[14px] items-center p-4" >
       <ThemeToggle />
       <UserInfo />
     </header>

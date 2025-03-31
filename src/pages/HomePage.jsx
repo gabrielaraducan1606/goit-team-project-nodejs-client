@@ -12,9 +12,11 @@ const HomePage = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col w-[calc(100%-256px)] ">
         <Header />
-        <Outlet />
+        <div className="overflow-x-auto whitespace-nowrap h-full">
+          <Outlet />
+        </div>
       </div>
     </div>
   );
