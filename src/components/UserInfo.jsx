@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { selectUserData } from "../redux/selectors";
 import BackupModal from "./backupModal";
 import ThemedAvatar from "./themedAvatar";
-import lightImage from '/images/user-light.png'
+// import lightImage from '/images/user-light.png'
 
 const UserInfo = () => {
   // Accesăm datele utilizatorului din Redux
   const user = useSelector(selectUserData);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
   return (
     <div className="flex items-center space-x-3 cursor-pointer">
