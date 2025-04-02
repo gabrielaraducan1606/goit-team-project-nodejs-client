@@ -19,7 +19,7 @@ export const registerUser = async (userData) => {
 export const createBoard = async (boardData) => {
   try {
     const response = await apiClient.post("/boards", boardData);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
   }
@@ -30,7 +30,7 @@ export const createBoard = async (boardData) => {
 export const updateBoard = async (boardId, boardData) => {
   try {
     const response = await apiClient.patch(`/boards/${boardId}`, boardData);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
   }
@@ -41,7 +41,7 @@ export const updateBoard = async (boardId, boardData) => {
 export const deleteBoard = async (boardId) => {
   try {
     const response = await apiClient.delete(`/boards/${boardId}`);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
   }
