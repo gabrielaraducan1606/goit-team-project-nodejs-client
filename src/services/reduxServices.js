@@ -37,7 +37,6 @@ export const fetchBoards = createAsyncThunk(
   }
 );
 
-
 // Fetching and populating the columns array in the state of the userSlice
 // This function should be called when the user clicks on a board in the sidebar or when the user creates a new column,edits a column or deletes a column
 export const fetchColumns = createAsyncThunk(
@@ -51,4 +50,3 @@ export const fetchColumns = createAsyncThunk(
     }
   }
 );
-
