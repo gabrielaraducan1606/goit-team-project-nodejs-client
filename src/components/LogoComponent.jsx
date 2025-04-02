@@ -1,12 +1,15 @@
 import React from "react";
+import CustomSvg from "./customSvg";
 
 const LogoComponent = () => {
   return (
     <div className="flex items-center justify-center w-[104px] h-[32px]" >
-      {/* SVG Logo */}
-      <img src="/svg/logo.svg" alt="TaskPro Logo" className="bg-[#1F1F1F] p-[8px_10px] rounded-md" />
-      {/* Text */}
-      <span className="ml-2 text-[16px] font-semibold leading-[100%] tracking-[-0.04em] font-poppins">
+      <CustomSvg
+        href={"/svg/symbol-defs.svg"}
+        id={"icon-logo"}
+        className={"size-5.5 fill-current stroke-current fill-[var(--color-icon-color)]"}
+      />
+      <span className="ml-2 text-[var(--color-logo)]">
         Task Pro
       </span>
     </div>
@@ -14,5 +17,3 @@ const LogoComponent = () => {
 };
 
 export default LogoComponent;
-
-

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./button";
 import BackupModal from "./backupModal";
+import CustomSvg from "./customSvg";
 
 const HelpSection = () => {
   const [help, setHelpOpen] = useState(false);
@@ -12,16 +13,20 @@ const HelpSection = () => {
 
   return (
     <div className="p-4 rounded-lg bg-background text-text">
-      <img src="/svg/plant.svg" alt="plant" />
+      <img src="/images/plant.png" alt="plant" />
 
       <p className="text-sm mt-4 mb-6 text-text w-[172px]">
-        If you need help with <span className="text-[#BEDBB0]">TaskPro</span>,
+        If you need help with <span className="text-[var(--color-secondary)]">TaskPro</span>,
         check out our support resources or reach out to our customer support
         team.
       </p>
 
       <div className="flex items-center gap-[8px] mt-6">
-        <img src="/svg/help.svg" fill="red" alt="help-symbol" />
+        <CustomSvg
+          href={"/svg/symbol-defs.svg"}
+          id={"icon-help"}
+          className={"size-5.5 stroke-current fill-[var(--color-icon-color)]"}
+        />
         <span
           className="text-text font-medium cursor-pointer"
           onClick={() => setHelpOpen(true)}
