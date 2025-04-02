@@ -14,7 +14,7 @@ const Column = ({ columnId, title }) => {
   const [addCard, setAddCard] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
   const [editColumn, setEditColumn] = useState(false);
-  // const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
 
   const handleChange = (item) => {

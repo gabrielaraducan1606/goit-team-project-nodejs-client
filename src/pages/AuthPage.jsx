@@ -15,6 +15,7 @@ export default function RegistrationPage() {
   const { register, handleSubmit, reset } = useForm();
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate();
+
   useEffect(() => {
     if (isLoggedIn) {
       navigate("/");
