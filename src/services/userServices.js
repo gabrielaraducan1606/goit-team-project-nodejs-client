@@ -53,9 +53,20 @@ export const deleteBoard = async (boardId) => {
 export const createColumn = async (columnData) => {
   try {
     const response = await apiClient.post("/columns", columnData);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
+  }
+};
+
+// Updates a column
+// This function should be called when the user submits the edit column modal
+export const updateColumn = async (columnId, data) => {
+  try {
+    const response = await apiClient.patch(`/columns/${columnId}`, data);
+    return response;
+  } catch (error) {
+    return error.response;
   }
 };
 
@@ -64,7 +75,7 @@ export const createColumn = async (columnData) => {
 export const deleteColumn = async (columnId) => {
   try {
     const response = await apiClient.delete(`/columns/${columnId}`);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
   }
