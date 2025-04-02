@@ -123,7 +123,7 @@ export default function RegistrationPage() {
           variant="auth"
           type="button"
           className="flex items-center justify-center gap-2 mt-2"
-          onClick={() => (window.location.href = "http://localhost:5000/api/auth/google")}
+          onClick={() => (window.location.href = "http://localhost:5000/auth/google")}
         >
         <img src="/svg/google.svg" alt="Google Logo" className="w-5 h-5" />
           Sign in with Google
