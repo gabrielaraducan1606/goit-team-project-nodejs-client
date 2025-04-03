@@ -4,6 +4,7 @@ import {
   fetchColumns,
   loginUser,
 } from "../../services/reduxServices";
+import { cookies } from "../../utils/cookies";
 
 const initialState = {
   userData: {
@@ -27,10 +28,15 @@ export const userSlice = createSlice({
       state.userData.avatarURL = null;
       state.userData.email = null;
       state.userData.id = null;
+      state.userData.name = null;
       state.boards = [];
       state.columns = [];
-      state.isFetching=
+      state.isFetching = false;
       state.isLoggedIn = false;
+      localStorage.removeItem("persist:root");
+      cookies.remove("token");
+      cookies.remove("refreshToken");
+      window.location.href = "/auth";
     },
   },
   extraReducers: (builder) => {
@@ -75,5 +81,6 @@ export const userSlice = createSlice({
   },
 });
 
+export const { logOut } = userSlice.actions;
 const userReducer = userSlice.reducer;
 export default userReducer;

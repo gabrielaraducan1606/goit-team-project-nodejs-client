@@ -1,6 +1,10 @@
+import { useDispatch } from "react-redux";
+import { logOut } from "../redux/slices/userSlice";
 const LogoutButton = () => {
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
-    
+    dispatch(logOut());
   };
 
   return (

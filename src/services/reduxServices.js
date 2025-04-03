@@ -14,6 +14,7 @@ export const loginUser = createAsyncThunk(
       const response = await axios.post(`${BASE_URL}/auth/login`, userData);
       const { _id, name, email, avatarURL } = response.data.data.user;
       cookies.set("token", response.data.data.accessToken);
+      cookies.set("refreshToken", response.data.data.refreshToken);
       return response.status === 200
         ? { id: _id, avatarURL, name, email }
         : null;

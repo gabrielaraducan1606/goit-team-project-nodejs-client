@@ -59,6 +59,17 @@ export const createColumn = async (columnData) => {
   }
 };
 
+// Updates a column
+// This function should be called when the user clicks the edit button in the create column modal
+export const updateColumn = async (columnId, title) => {
+  try {
+    const response = await apiClient.patch(`/columns/${columnId}`, { title: title });
+    return response.status;
+  } catch (error) {
+    return error.response.message;
+  }
+};
+
 // Deletes a column
 // This function should be called when the user clicks the confirm delete button in the delete column modal
 export const deleteColumn = async (columnId) => {
@@ -93,18 +104,17 @@ export const createCard = async (cardData) => {
   }
 };
 
-
 // Updates a card
 // This function should be called when the user clicks the update button in the edit card modal
 // cardData may contain the columnId, title, description, label, and deadline of the card
-export const updateCard = async (cardId, cardData) => { 
+export const updateCard = async (cardId, cardData) => {
   try {
     const response = await apiClient.patch(`/cards/${cardId}`, cardData);
     return response.status;
   } catch (error) {
     return error.response.message;
   }
-}
+};
 
 // Deletes a card
 // This function should be called when the user clicks the confirm delete button in the delete card modal

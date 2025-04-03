@@ -15,7 +15,7 @@ const Board = () => {
   const [addColumn, setAddColumn] = useState(false);
   const boards = useSelector(selectBoards);
   const columns = useSelector(selectColumns);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
     if (boardId) {
@@ -27,20 +27,17 @@ const Board = () => {
     const response = await createColumn({ boardId, title: data.title });
     if (response === 201) {
       dispatch(fetchColumns(boardId));
+      reset();
       setAddColumn(false);
     }
   };
 
-  const boardName = () => {
-    const board = boards.find((board) => board._id === boardId);
-    return board.title;
-  };
+
 
   return (
     <>
       {boards.length > 0 ? (
         <div className="px-5 w-fit ">
-          <h4 className="my-2">{boardName()}</h4>
           <div className="flex gap-10 ">
             {columns.map((column) => {
               return (
@@ -87,8 +84,6 @@ const Board = () => {
           </Button>
         </form>
       </BackupModal>
-
-     
     </>
   );
 };

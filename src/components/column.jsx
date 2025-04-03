@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { deleteColumn, fetchCards } from "../services/userServices";
+import {
+  deleteColumn,
+  fetchCards,
+  updateColumn,
+} from "../services/userServices";
 import Button from "./button";
 import BackupModal from "./backupModal";
 import { labels } from "../utils/arrays";
@@ -8,27 +12,34 @@ import CustomSvg from "./customSvg";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { fetchColumns } from "../services/reduxServices";
+import { useParams } from "react-router";
 
 const Column = ({ columnId, title }) => {
   const [cards, setCards] = useState([]);
   const [addCard, setAddCard] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
   const [editColumn, setEditColumn] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const { boardId } = useParams();
   const dispatch = useDispatch();
 
   const handleChange = (item) => {
     setSelectedValue(item);
   };
 
-  // const editCol= async (data)=>{
-  //   const respones = await
-  // }
+  const editCol = async (data) => {
+    const response = await updateColumn(columnId, data.title);
+    if (response === 200) {
+      reset();
+      setEditColumn(false);
+      dispatch(fetchColumns(boardId));
+    }
+  };
 
   const handelDelete = async () => {
     const response = await deleteColumn(columnId);
     if (response === 204) {
-      dispatch(fetchColumns);
+      dispatch(fetchColumns(boardId));
     }
   };
 
@@ -106,6 +117,7 @@ const Column = ({ columnId, title }) => {
                     value={item.name}
                     checked={selectedValue === item.name}
                     onChange={() => handleChange(item.name)}
+                    {...register("label")}
                     className="absolute opacity-0 h-0 w-0"
                   />
                   <div
@@ -148,7 +160,7 @@ const Column = ({ columnId, title }) => {
         closeModal={() => setEditColumn(false)}
       >
         <h4>Edit column</h4>
-        <form className=" flex flex-col gap-6">
+        <form className=" flex flex-col gap-6" onSubmit={handleSubmit(editCol)}>
           <input
             type="text"
             className="outline-0"
