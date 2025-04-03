@@ -22,7 +22,6 @@ const Board = () => {
       dispatch(fetchColumns(boardId));
     }
   }, [boardId, dispatch]);
-
   const addNewColumn = async (data) => {
     const response = await createColumn({ boardId, title: data.title });
     if (response === 201) {
@@ -31,8 +30,6 @@ const Board = () => {
       setAddColumn(false);
     }
   };
-
-
 
   return (
     <>

@@ -5,7 +5,7 @@ import Button from "./button";
 import { createPortal } from "react-dom";
 
 const modalStyles = tv({
-  base: "bg-modal-bg border border-primary rounded-lg p-6 flex flex-col gap-6 relative",
+  base: "bg-modal-bg border border-primary rounded-lg p-6 flex flex-col gap-6 animate-jump-in animate-once animate-duration-250 animate-ease-linear animate-normal relative",
   variants: {
     size: {
       md: "h-fit w-[20.938rem] sm:w-[21.875rem]",

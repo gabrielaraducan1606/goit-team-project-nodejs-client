@@ -12,9 +12,10 @@ import CustomSvg from "./customSvg";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { fetchColumns } from "../services/reduxServices";
-import { useParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 
 const Column = ({ columnId, title }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [cards, setCards] = useState([]);
   const [addCard, setAddCard] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
@@ -22,6 +23,12 @@ const Column = ({ columnId, title }) => {
   const { register, handleSubmit, reset } = useForm();
   const { boardId } = useParams();
   const dispatch = useDispatch();
+
+  const query = searchParams.get("q");
+
+  const filteredCards = cards.filter((card) => {
+    return card.toLowerCase().includes(query.toLowerCase());
+  });
 
   const handleChange = (item) => {
     setSelectedValue(item);
@@ -46,7 +53,6 @@ const Column = ({ columnId, title }) => {
   useEffect(() => {
     (async () => {
       const respones = await fetchCards(columnId);
-
       setCards(respones);
     })();
   }, [columnId]);
@@ -70,7 +76,7 @@ const Column = ({ columnId, title }) => {
           />
         </Button>
       </div>
-      {cards.map((card) => {
+      {filteredCards.map((card) => {
         return (
           <CustomCard
             key={card._id}
