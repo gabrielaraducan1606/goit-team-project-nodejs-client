@@ -14,8 +14,6 @@ import { createBoard, updateBoard, deleteBoard } from "../services/userServices.
 
 const Sidebar = () => {
   const boards = useSelector(selectBoards);
-  const [createBoard, setCreateBoardOpen] = useState(false);
-  console.log("Boards data:", boards);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
@@ -119,34 +117,6 @@ const Sidebar = () => {
           </div>
 
         {/* Lista de Dashboard-uri */}
-        <div className="flex-1 max-h-[206px] overflow-y-auto">
-
-            <div
-              // key={board._id}
-              className="p-2 rounded-md flex justify-between cursor-pointer hover:bg-boards-hover"
-            >
-              <Link >
-                <span className="text-text"></span>
-              </Link>
-              {/* <div className="flex gap-2.5 items-center">
-                <Button variant={"icon"}>
-                  <CustomSvg
-                    href={"/svg/general-use-icons.svg"}
-                    id={"pencil"}
-                    className={"size-3.5"}
-                  />
-                </Button>
-                <Button variant={"icon"}>
-                  <CustomSvg
-                    href={"/svg/general-use-icons.svg"}
-                    id={"trash"}
-                    className={"size-3.5"}
-                  />
-                </Button>
-              </div> */}
-            </div>
-
-        </div>
           <div className="flex-1 max-h-[206px] overflow-y-auto">
             {boards.map((board) => (
                 <div
