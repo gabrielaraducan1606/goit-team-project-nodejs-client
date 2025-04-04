@@ -19,7 +19,7 @@ export const registerUser = async (userData) => {
 export const createBoard = async (boardData) => {
   try {
     const response = await apiClient.post("/boards", boardData);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
   }
@@ -30,7 +30,7 @@ export const createBoard = async (boardData) => {
 export const updateBoard = async (boardId, boardData) => {
   try {
     const response = await apiClient.patch(`/boards/${boardId}`, boardData);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
   }
@@ -41,7 +41,7 @@ export const updateBoard = async (boardId, boardData) => {
 export const deleteBoard = async (boardId) => {
   try {
     const response = await apiClient.delete(`/boards/${boardId}`);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
   }
@@ -53,22 +53,20 @@ export const deleteBoard = async (boardId) => {
 export const createColumn = async (columnData) => {
   try {
     const response = await apiClient.post("/columns", columnData);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
   }
 };
 
 // Updates a column
-// This function should be called when the user clicks the edit button in the create column modal
-export const updateColumn = async (columnId, title) => {
+// This function should be called when the user submits the edit column modal
+export const updateColumn = async (columnId, data) => {
   try {
-    const response = await apiClient.patch(`/columns/${columnId}`, {
-      title: title,
-    });
-    return response.status;
+    const response = await apiClient.patch(`/columns/${columnId}`, data);
+    return response;
   } catch (error) {
-    return error.response.message;
+    return error.response;
   }
 };
 
@@ -77,7 +75,7 @@ export const updateColumn = async (columnId, title) => {
 export const deleteColumn = async (columnId) => {
   try {
     const response = await apiClient.delete(`/columns/${columnId}`);
-    return response.status;
+    return response;
   } catch (error) {
     return error.response.message;
   }
