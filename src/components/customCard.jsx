@@ -3,7 +3,7 @@ import { labels } from "../utils/arrays";
 import Button from "./button";
 import CustomSvg from "./customSvg";
 
-const CustomCard = ({ title, description, priority, deadline }) => {
+const CustomCard = ({ title, description, priority, deadline, onEdit, onDelete}) => {
   const priorityColor = (priority) => {
     const color = labels.find((label) => label.name === priority);
     return color.hex;
@@ -47,14 +47,14 @@ const CustomCard = ({ title, description, priority, deadline }) => {
               className={"size-5"}
             />
           </Button>
-          <Button variant={"icon"}>
+          <Button variant={"icon"} onClick={onEdit}>
             <CustomSvg
               href={"/svg/general-use-icons.svg"}
               id={"pencil"}
               className={"size-5"}
             />
           </Button>
-          <Button variant={"icon"}>
+          <Button variant={"icon"} onClick={onDelete}>
             <CustomSvg
               href={"/svg/general-use-icons.svg"}
               id={"trash"}
