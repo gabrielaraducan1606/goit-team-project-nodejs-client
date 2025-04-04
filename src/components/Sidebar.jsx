@@ -14,6 +14,11 @@ import { createBoard, updateBoard, deleteBoard } from "../services/userServices.
 
 const Sidebar = () => {
   const boards = useSelector(selectBoards);
+  const [createBoard, setCreateBoardOpen] = useState(false);
+  console.log("Boards data:", boards);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => setIsOpen(!isOpen);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -80,16 +85,32 @@ const Sidebar = () => {
   };
 
   return (
-      <>
-        <aside className="w-64 h-full p-4 flex flex-col bg-sidebar-bg text-text">
-          <LogoComponent />
+    <>
+        <button
+          onClick={toggleSidebar}
+          className="block md:hidden lg:hidden bg-top-bar p-8.5 text-text relative h-10 top-0 right-0" // Poziționează butonul în colțul din dreapta sus
+        >
+          <span className="block w-6 h-1 bg-current mb-1"></span>
+          <span className="block w-6 h-1 bg-current mb-1"></span>
+          <span className="block w-6 h-1 bg-current"></span>
+        </button>
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed top-0 left-0 h-full p-4 flex flex-col bg-sidebar-bg text-text 
+          sm:w-1/4 md:w-1/3 lg:w-1/4 xl:w-1/5
+          ${isOpen ? "block" : "hidden"}
+          transition-transform duration-300 ease-in-out sm:static sm:translate-x-0  md:block sm:hidden`}
+      >
+        {/* Logo Component */}
+        <LogoComponent />
 
           <h3 className="text-sm mb-0 mt-[60px] text-[12px] font-thin text-gray-400">
             My boards
           </h3>
 
-          <div className="flex items-center justify-between w-[212px] h-[70px] mt-[8px] border-t border-b border-black/10">
-          <span className="font-poppins w-[76px] text-title text-[14px] font-medium">
+        <div className="flex items-center justify-between w-[212px] h-[70px] mt-[8px] border-t border-b border-black/10">
+          <span className=" w-[76px] text-[var(--color-logo)] text-[14px]">
             Create a new board
           </span>
             <Button variant="small" onClick={() => setCreateBoardOpen(true)}>
@@ -97,6 +118,35 @@ const Sidebar = () => {
             </Button>
           </div>
 
+        {/* Lista de Dashboard-uri */}
+        <div className="flex-1 max-h-[206px] overflow-y-auto">
+
+            <div
+              // key={board._id}
+              className="p-2 rounded-md flex justify-between cursor-pointer hover:bg-boards-hover"
+            >
+              <Link >
+                <span className="text-text"></span>
+              </Link>
+              {/* <div className="flex gap-2.5 items-center">
+                <Button variant={"icon"}>
+                  <CustomSvg
+                    href={"/svg/general-use-icons.svg"}
+                    id={"pencil"}
+                    className={"size-3.5"}
+                  />
+                </Button>
+                <Button variant={"icon"}>
+                  <CustomSvg
+                    href={"/svg/general-use-icons.svg"}
+                    id={"trash"}
+                    className={"size-3.5"}
+                  />
+                </Button>
+              </div> */}
+            </div>
+
+        </div>
           <div className="flex-1 max-h-[206px] overflow-y-auto">
             {boards.map((board) => (
                 <div
