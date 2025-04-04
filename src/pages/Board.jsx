@@ -7,8 +7,6 @@ import {createColumn, deleteColumn, updateColumn} from "../services/userServices
 import Column from "../components/column";
 import BackupModal from "../components/backupModal";
 import Button from "../components/button";
-import { createColumn } from "../services/userServices";
-import { useForm } from "react-hook-form";
 
 const Board = () => {
   const { boardId } = useParams();
