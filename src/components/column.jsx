@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   deleteColumn,
   fetchCards,
+  filtereCards,
   updateColumn,
 } from "../services/userServices";
 import Button from "./button";
@@ -15,7 +16,7 @@ import { fetchColumns } from "../services/reduxServices";
 import { useParams, useSearchParams } from "react-router";
 
 const Column = ({ columnId, title }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [cards, setCards] = useState([]);
   const [addCard, setAddCard] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
@@ -24,11 +25,14 @@ const Column = ({ columnId, title }) => {
   const { boardId } = useParams();
   const dispatch = useDispatch();
 
-  const query = searchParams.get("q");
+  useEffect(() => {
+    (async () => {
+      const respones = await fetchCards(columnId);
+      setCards(respones);
+    })();
+  }, [columnId]);
 
-  const filteredCards = cards.filter((card) => {
-    return card.toLowerCase().includes(query.toLowerCase());
-  });
+  const query = searchParams.get("q");
 
   const handleChange = (item) => {
     setSelectedValue(item);
@@ -50,12 +54,7 @@ const Column = ({ columnId, title }) => {
     }
   };
 
-  useEffect(() => {
-    (async () => {
-      const respones = await fetchCards(columnId);
-      setCards(respones);
-    })();
-  }, [columnId]);
+  const filteredCards = filtereCards(query, cards);
 
   return (
     <div className="w-[21rem] flex flex-col overflow-y-scroll gap-5 max-h-full">
