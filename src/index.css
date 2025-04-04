@@ -6,6 +6,7 @@
   --color-background: #f6f6f7;
   --color-card-bg: #ffffff;
   --color-modal-bg: #fcfcfc;
+  --color-logo: #161616;
   --color-sidebar-bg: #ffffff;
   --color-top-bar: #fcfcfc;
   --color-primary: #bedbb0;
@@ -33,6 +34,7 @@
   --color-background: #1f1f1f;
   --color-card-bg: #121212;
   --color-modal-bg: #151515;
+  --color-logo: #ffffff;
   --color-sidebar-bg: #121212;
   --color-top-bar: #161616;
   --color-primary: #bedbb0;
@@ -59,6 +61,7 @@
 [data-theme="violet"] {
   --color-background: #ecedfd;
   --color-card-bg: #ffffff;
+  --color-logo: #ffffff;
   --color-modal-bg: #fcfcfc;
   --color-sidebar-bg: #5255bc;
   --color-top-bar: #ffffff;

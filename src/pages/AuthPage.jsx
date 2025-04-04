@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../services/userServices";
 import { loginUser } from "../services/reduxServices";
 import { ToastContainer, toast, Slide } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { selectIsLoggedIn } from "../redux/selectors";
 import { useNavigate } from "react-router";
 
@@ -23,42 +24,35 @@ export default function RegistrationPage() {
   }, [isLoggedIn]);
 
   const authUser = async (data) => {
-    switch (isRegister) {
-      case true: {
-        const response = await registerUser(data);
-        if (response === 201) {
-          setIsRegister(false);
-          toast.success("Registration successful!", {
-            position: "top-center",
-            autoClose: 2000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: false,
-            progress: undefined,
-            theme: "light",
-            transition: Slide,
-          });
-        }
-        reset();
-        break;
+    if (isRegister) {
+      const response = await registerUser(data);
+
+      if (response === 201) {
+        toast.success("Registration successful! Please check your email to verify your account.", {
+          position: "top-center",
+          autoClose: 4000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+          theme: "light",
+          transition: Slide,
+        });
+
+        setIsRegister(false); 
       }
-      default:
-        {
-          const { email, password } = data;
-          dispatch(loginUser({ email, password }));
-          reset();
-        }
-        break;
+      reset();
+    } else {
+      const { email, password } = data;
+      dispatch(loginUser({ email, password }));
+      reset();
     }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-b from-[#F6F6F7] to-[#BEDBB0] p-4">
-      <div
-        className="bg-[#151515] text-white rounded-lg p-6 shadow-lg"
-        style={{ width: "424px", height: "395px", borderRadius: "8px" }}
-      >
+      <div className="bg-[#151515] text-white rounded-lg p-6 shadow-lg" style={{ width: "424px", height: "395px" }}>
         {/* Tab-uri Registration & Log In */}
         <div className="flex gap-4 justify-start mb-[40px]">
           <button
@@ -72,9 +66,7 @@ export default function RegistrationPage() {
           </button>
           <button
             className={`text-[18px] transition-transparent duration-200 cursor-pointer ${
-              isRegister
-                ? "text-white/30 bg-transparent/30 hover:text-white"
-                : "text-white"
+              isRegister ? "text-white/30 bg-transparent/30 hover:text-white" : "text-white"
             }`}
             style={{ width: "51px", height: "27px" }}
             onClick={() => setIsRegister(false)}
@@ -105,7 +97,6 @@ export default function RegistrationPage() {
             />
           </div>
 
-          {/* Input parolă cu icon */}
           <div className="relative">
             <input
               {...register("password")}
@@ -125,6 +116,19 @@ export default function RegistrationPage() {
           <Button variant="auth" type="submit">
             {isRegister ? "Register Now" : "Log In Now"}
           </Button>
+
+          {/* Buton Google */}
+          {!isRegister && (
+        <button
+          variant="auth"
+          type="button"
+          className="flex items-center justify-center gap-2 mt-2"
+          onClick={() => (window.location.href = "http://localhost:5000/auth/google")}
+        >
+        <img src="/svg/google.svg" alt="Google Logo" className="w-5 h-5" />
+          Sign in with Google
+        </button>
+)}
         </form>
         <ToastContainer />
       </div>

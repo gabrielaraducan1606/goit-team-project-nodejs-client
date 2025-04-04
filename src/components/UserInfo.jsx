@@ -3,20 +3,18 @@ import { useSelector } from "react-redux";
 import { selectUserData } from "../redux/selectors";
 import BackupModal from "./backupModal";
 import ThemedAvatar from "./themedAvatar";
+// import lightImage from '/images/user-light.png'
 
 const UserInfo = () => {
-  // Accesăm datele utilizatorului din Redux
   const user = useSelector(selectUserData);
-  const [open, setOpen] = useState(false);
+  const [open] = useState(false);
 
   return (
     <div className="flex items-center space-x-3 cursor-pointer">
-      {/* Dacă avatarURL este disponibil, afișăm imaginea utilizatorului */}
       <span className="font-medium">{user.name || "User"}</span>{" "}
-      {/* Afișăm numele utilizatorului */}
       {user.avatarURL ? (
         <img
-          src={user.avatarURL} // Dacă avatarURL este null, afișăm un avatar default
+          src="/images/avatar.png"
           alt="User Avatar"
           className="size-10 rounded-full"
         />
