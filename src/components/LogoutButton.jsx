@@ -1,8 +1,13 @@
+
+import { useDispatch } from "react-redux";
+import { logOut } from "../redux/slices/userSlice";
 import CustomSvg from "./customSvg";
 
 const LogoutButton = () => {
+  const dispatch = useDispatch();
+
   const handleLogout = () => {
-    
+    dispatch(logOut());
   };
 
   return (

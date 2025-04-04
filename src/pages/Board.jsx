@@ -6,32 +6,36 @@ import { fetchColumns } from "../services/reduxServices";
 import Column from "../components/column";
 import BackupModal from "../components/backupModal";
 import Button from "../components/button";
+import { createColumn } from "../services/userServices";
+import { useForm } from "react-hook-form";
 
 const Board = () => {
   const { boardId } = useParams();
   const dispatch = useDispatch();
   const [addColumn, setAddColumn] = useState(false);
-  const [editColumn, setEditColumn] = useState(false);
   const boards = useSelector(selectBoards);
   const columns = useSelector(selectColumns);
+  const { register, handleSubmit, reset } = useForm();
 
   useEffect(() => {
     if (boardId) {
       dispatch(fetchColumns(boardId));
     }
   }, [boardId, dispatch]);
-
-  const boardName = () => {
-    const board = boards.find((board) => board._id === boardId);
-    return board.title;
+  const addNewColumn = async (data) => {
+    const response = await createColumn({ boardId, title: data.title });
+    if (response === 201) {
+      dispatch(fetchColumns(boardId));
+      reset();
+      setAddColumn(false);
+    }
   };
 
   return (
     <>
       {boards.length > 0 ? (
-        <div className="px-5 ">
-          <h4 className="my-2">{boardName()}</h4>
-          <div className="flex gap-10 w-full  overflow-x-scroll">
+        <div className="px-5 w-fit ">
+          <div className="flex gap-10 ">
             {columns.map((column) => {
               return (
                 <Column
@@ -41,10 +45,10 @@ const Board = () => {
                 />
               );
             })}
-            <Button variant={"secondary"}>
+            <Button variant={"secondary"} onClick={() => setAddColumn(true)}>
               <span className="create-col">+</span>Add another column
             </Button>
-          </div>{" "}
+          </div>
         </div>
       ) : (
         <p className="text-center">
@@ -61,30 +65,16 @@ const Board = () => {
         closeModal={() => setAddColumn(false)}
       >
         <h4>Add column</h4>
-        <form>
+        <form
+          className=" flex flex-col gap-6"
+          onSubmit={handleSubmit(addNewColumn)}
+        >
           <input
             type="text"
             className="outline-0"
             placeholder="Title"
             name="title"
-          />
-          <Button variant={"primary"}>
-            <span className="create">+</span>Add
-          </Button>
-        </form>
-      </BackupModal>
-      <BackupModal
-        size={"md"}
-        open={editColumn}
-        closeModal={() => setEditColumn(false)}
-      >
-        <h4>Edit column</h4>
-        <form>
-          <input
-            type="text"
-            className="outline-0"
-            placeholder="Title"
-            name="title"
+            {...register("title")}
           />
           <Button variant={"primary"}>
             <span className="create">+</span>Add

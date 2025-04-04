@@ -11,7 +11,7 @@ const buttonStyles = tv({
       secondary:
         "bg-card-bg hover:bg-secondary text-title w-[21rem] h-[3.125rem] flex items-center justify-center font-semibold",
       auth: "bg-[#BEDBB0] hover:bg-[#9DC888] text-[#161616] w-full h-[3.125rem] flex items-center justify-center font-semibold",
-      icon: "bg-transparent w-fit h-fit p-0 m-0",
+      icon: "bg-transparent size-fit",
       small:
         "bg-small-btn-primary hover:bg-small-btn-secondary text-btn-text w-[2.5rem ] h-[2.25rem] aspect-[1/1] flex items-center justify-center font-semibold",
     },

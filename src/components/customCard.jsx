@@ -22,7 +22,8 @@ const CustomCard = ({ title, description, priority, deadline }) => {
           <p className="text-xs">Priority</p>
           <div className="flex items-center gap-1">
             <div
-              className={`size-4 rounded-full aspect-square bg-[${selectedColor}]`}
+              className={`size-4 rounded-full aspect-square `}
+              style={{ backgroundColor: selectedColor }}
             ></div>
             <p>{priority}</p>
           </div>
@@ -63,7 +64,8 @@ const CustomCard = ({ title, description, priority, deadline }) => {
         </div>
       </div>
       <div
-        className={`absolute bg-[${selectedColor}] h-full w-1 top-0 left-0`}
+        className={`absolute h-full w-1 top-0 left-0`}
+        style={{ backgroundColor: selectedColor }}
       ></div>
     </div>
   );
