@@ -5,8 +5,13 @@ import BackupModal from "./backupModal";
 import { labels } from "../utils/arrays";
 import CustomCard from "./customCard";
 import CustomSvg from "./customSvg";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { fetchColumns } from "../services/reduxServices";
+import { useParams, useSearchParams } from "react-router";
 
 const Column = ({ columnId, title, onEdit, onDelete }) => {
+  const [searchParams] = useSearchParams();
   const [cards, setCards] = useState([]);
   const [addCard, setAddCard] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
@@ -21,6 +26,30 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
       setCards(respones);
     })();
   }, [columnId]);
+
+  const query = searchParams.get("q");
+
+  const handleChange = (item) => {
+    setSelectedValue(item);
+  };
+
+  const editCol = async (data) => {
+    const response = await updateColumn(columnId, data.title);
+    if (response === 200) {
+      reset();
+      setEditColumn(false);
+      dispatch(fetchColumns(boardId));
+    }
+  };
+
+  const handelDelete = async () => {
+    const response = await deleteColumn(columnId);
+    if (response === 204) {
+      dispatch(fetchColumns(boardId));
+    }
+  };
+
+  const filteredCards = filtereCards(query, cards);
 
   return (
       <div className="w-[21rem] flex flex-col gap-5 max-h-full overflow-y-hidden">

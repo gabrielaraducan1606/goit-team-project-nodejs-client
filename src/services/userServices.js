@@ -104,18 +104,17 @@ export const createCard = async (cardData) => {
   }
 };
 
-
 // Updates a card
 // This function should be called when the user clicks the update button in the edit card modal
 // cardData may contain the columnId, title, description, label, and deadline of the card
-export const updateCard = async (cardId, cardData) => { 
+export const updateCard = async (cardId, cardData) => {
   try {
     const response = await apiClient.patch(`/cards/${cardId}`, cardData);
     return response.status;
   } catch (error) {
     return error.response.message;
   }
-}
+};
 
 // Deletes a card
 // This function should be called when the user clicks the confirm delete button in the delete card modal
@@ -126,4 +125,15 @@ export const deleteCard = async (cardId) => {
   } catch (error) {
     return error.response.message;
   }
+};
+
+// Filters the cards based on the search query
+// This function should be called always before diplayng the cards
+export const filtereCards = (query, cards) => {
+  if (query) {
+    return cards.filter((card) =>
+      card.priority.toLowerCase().includes(query.toLowerCase())
+    );
+  }
+  return cards;
 };
