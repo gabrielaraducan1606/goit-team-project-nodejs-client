@@ -137,3 +137,10 @@ export const filtereCards = (query, cards) => {
   }
   return cards;
 };
+
+// Used to get the src for the board background
+// this function should be called every thime the board is changed and it has background
+export const selectBG = (boardId, boardArr) => {
+  const bg = boardArr.find((board) => board._id === boardId);
+  return bg.background;
+};

@@ -11,21 +11,24 @@ export const icons = [
 
 export const backgrounds = [
   { src: "/images/bg-image-list/none.png", name: "none" },
-  { src: "/images/bg-image-list/petals.png", name: "petals" },
-  { src: "/images/bg-image-list/peaks.png", name: "peaks" },
-  { src: "/images/bg-image-list/tree.png", name: "tree" },
-  { src: "/images/bg-image-list/dusk.png", name: "dusk" },
-  { src: "/images/bg-image-list/leafs.png", name: "leafs" },
-  { src: "/images/bg-image-list/cloud.png", name: "cloud" },
-  { src: "/images/bg-image-list/clif.png", name: "clif" },
-  { src: "/images/bg-image-list/abstract.png", name: "abstract" },
-  { src: "/images/bg-image-list/moon.png", name: "moon" },
+  { src: "/images/bg-image-list/bubble.png", name: "bubble" },
+  {
+    src: "/images/bg-image-list/colorful-balloon.png",
+    name: "colorful-balloon",
+  },
+  { src: "/images/bg-image-list/white-baloon.png", name: "white-baloon" },
   { src: "/images/bg-image-list/boat.png", name: "boat" },
-  { src: "/images/bg-image-list/baloon.png", name: "baloon" },
-  { src: "/images/bg-image-list/canion.png", name: "canion" },
-  { src: "/images/bg-image-list/sea.png", name: "sea" },
-  { src: "/images/bg-image-list/baloons.png", name: "baloons" },
-  { src: "/images/bg-image-list/milky.png", name: "milky" },
+  { src: "/images/bg-image-list/desert.png", name: "desert" },
+  { src: "/images/bg-image-list/landscape.png", name: "landscape" },
+  { src: "/images/bg-image-list/sky.png", name: "sky" },
+  { src: "/images/bg-image-list/half-moon.png", name: "half-moon" },
+  { src: "/images/bg-image-list/leaves.png", name: "leaves" },
+  { src: "/images/bg-image-list/camper.png", name: "camper" },
+  { src: "/images/bg-image-list/full-moon.png", name: "full-moon" },
+  { src: "/images/bg-image-list/pink-flowers.png", name: "pink-flowers" },
+  { src: "/images/bg-image-list/blue-sea.png", name: "blue-sea" },
+  { src: "/images/bg-image-list/pink-tree.png", name: "pink-tree" },
+  { src: "/images/bg-image-list/star-sky.png", name: "star-sky" },
 ];
 
 export const labels = [

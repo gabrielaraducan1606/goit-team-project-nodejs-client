@@ -3,7 +3,14 @@ import { labels } from "../utils/arrays";
 import Button from "./button";
 import CustomSvg from "./customSvg";
 
-const CustomCard = ({ title, description, priority, deadline, onEdit, onDelete}) => {
+const CustomCard = ({
+  title,
+  description,
+  priority,
+  deadline,
+  onEdit,
+  onDelete,
+}) => {
   const priorityColor = (priority) => {
     const color = labels.find((label) => label.name === priority);
     return color.hex;
@@ -13,7 +20,7 @@ const CustomCard = ({ title, description, priority, deadline, onEdit, onDelete})
   const dateToday = new Date();
 
   return (
-    <div className="w-[21rem] bg-card-bg rounded-lg relative overflow-hidden p-4  flex flex-col gap-3 h-fit">
+    <div className="w-[20.8rem] bg-card-bg rounded-lg relative overflow-hidden p-4  flex flex-col gap-3 h-fit">
       <h4>{title}</h4>
       <p className="line-clamp-2 text-xs">{description}</p>
       <hr className="my-2" />
