@@ -20,6 +20,8 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
 
   const handleChange = (item) => {
     setSelectedValue(item);
+    console.log(item);
+    
   };
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
       columnId,
       title: cardTitle,
       description: cardDescription,
-      label: selectedValue,
+      priority: selectedValue,
       deadline: cardDeadline,
     };
 
@@ -98,8 +100,8 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
   };
 
   return (
-    <div className="w-[21rem] flex flex-col gap-5 max-h-full overflow-y-hidden">
-      <div className="flex w-full h-fit bg-card-bg rounded-lg p-4 items-center">
+    <div className="min-w-[21rem] flex flex-col items-center gap-5 max-h-full overflow-y-hidden">
+      <div className="flex w-full h-fit gap-2 bg-card-bg rounded-lg p-4 items-center">
         <h4 className="grow font-semibold">{title}</h4>
         <Button variant={"icon"} onClick={onEdit}>
           <CustomSvg

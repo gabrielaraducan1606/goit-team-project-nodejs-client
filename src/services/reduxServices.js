@@ -15,6 +15,8 @@ export const loginUser = createAsyncThunk(
       const { _id, name, email, avatarURL } = response.data.data.user;
       cookies.set("token", response.data.data.accessToken);
       cookies.set("refreshToken", response.data.data.refreshToken);
+      console.log(response.data);
+
       return response.status === 200
         ? { id: _id, avatarURL, name, email }
         : null;
@@ -48,6 +50,49 @@ export const fetchColumns = createAsyncThunk(
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
+    }
+  }
+);
+
+// Updating user profile
+// This function should be called when the user clicks the save button in the edit profile modal
+export const updateUserProfile = createAsyncThunk(
+  "user/updateUserProfile",
+  async (updates, thunkAPI) => {
+    try {
+      const res = await axios.patch("/api/auth/profile", updates, {
+        withCredentials: true,
+      });
+      return res.data.data.user;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.message || err.message
+      );
+    }
+  }
+);
+
+// Uploading user avatar
+// This function should be called when the user clicks the save button in the edit profile modal
+export const uploadUserAvatar = createAsyncThunk(
+  "user/uploadUserAvatar",
+  async (file, thunkAPI) => {
+    try {
+      const formData = new FormData();
+      formData.append("avatar", file);
+
+      const res = await axios.post("/api/auth/avatar", formData, {
+        withCredentials: true,
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
+      return res.data.data.user;
+    } catch (err) {
+      return thunkAPI.rejectWithValue(
+        err.response?.data?.message || err.message
+      );
     }
   }
 );

@@ -12,7 +12,7 @@ const Header = () => {
   const { boardId } = useParams();
   const boards = useSelector(selectBoards);
   const [popout, openPopout] = useState(false);
-  const [, setSearchParams] = useSearchParams({  });
+  const [, setSearchParams] = useSearchParams({});
 
   const togglePopout = () => {
     openPopout((popout) => !popout);
@@ -40,6 +40,15 @@ const Header = () => {
   return (
     <div className="w-full">
       <header className="flex w-full justify-end bg-top-bar gap-[14px] items-center p-4">
+        <div className="grow md:hidden">
+          <Button variant={"icon"} onClick={() => setSearchParams({ sb: "y" })}>
+            <CustomSvg
+              href={"/svg/general-use-icons.svg"}
+              id={"menu"}
+              className={"fill-icon-color size-9"}
+            />
+          </Button>
+        </div>
         <ThemeToggle />
         <UserInfo />
       </header>
@@ -100,7 +109,6 @@ const Header = () => {
         )}
       </div>
     </div>
-
   );
 };
 

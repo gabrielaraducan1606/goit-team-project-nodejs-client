@@ -3,6 +3,8 @@ import {
   fetchBoards,
   fetchColumns,
   loginUser,
+  updateUserProfile,
+  uploadUserAvatar,
 } from "../../services/reduxServices";
 import { cookies } from "../../utils/cookies";
 
@@ -25,10 +27,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     logOut: (state) => {
-      state.userData.avatarURL = null;
-      state.userData.email = null;
-      state.userData.id = null;
-      state.userData.name = null;
+      state.userData = { id: null, name: null, email: null, avatarURL: null };
       state.boards = [];
       state.columns = [];
       state.isFetching = false;
@@ -41,6 +40,12 @@ export const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.userData = action.payload;
+      })
+      .addCase(uploadUserAvatar.fulfilled, (state, action) => {
+        state.userData = action.payload;
+      })
       .addCase(loginUser.pending, (state) => {
         state.isFetching = true;
         state.error = null;
