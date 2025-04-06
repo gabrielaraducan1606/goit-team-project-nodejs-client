@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {createCard, deleteCard, fetchCards, filtereCards, updateCard} from "../services/userServices";
+import {
+  createCard,
+  deleteCard,
+  fetchCards,
+  filtereCards,
+  updateCard,
+} from "../services/userServices";
 import Button from "./button";
 import BackupModal from "./backupModal";
 import { labels } from "../utils/arrays";
@@ -134,14 +140,14 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
           <CustomSvg
             href={"/svg/general-use-icons.svg"}
             id={"pencil"}
-            className={"size-5"}
+            className={"size-4 stroke-icon-color"}
           />
         </Button>
         <Button variant={"icon"} onClick={onDelete}>
           <CustomSvg
             href={"/svg/general-use-icons.svg"}
             id={"trash"}
-            className={"size-5"}
+            className={"size-4 stroke-icon-color"}
           />
         </Button>
       </div>
@@ -165,68 +171,78 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
       </Button>
 
       {/* ADD/EDIT CARD MODAL */}
-      <BackupModal size={"md"} open={addCard || editCard} closeModal={resetForm}>
+      <BackupModal
+        size={"md"}
+        open={addCard || editCard}
+        closeModal={resetForm}
+      >
         <form
-            className="flex flex-col gap-6"
-            onSubmit={editCard ? handleUpdateCardSubmit : handleAddCardSubmit}
+          className="flex flex-col gap-6"
+          onSubmit={editCard ? handleUpdateCardSubmit : handleAddCardSubmit}
         >
           <h4>{editCard ? "Edit Card" : "Add Card"}</h4>
           <input
-              type="text"
-              className="outline-0"
-              placeholder="Title"
-              name="title"
-              value={cardTitle}
-              onChange={(e) => setCardTitle(e.target.value)}
+            type="text"
+            className="outline-0"
+            placeholder="Title"
+            name="title"
+            value={cardTitle}
+            onChange={(e) => setCardTitle(e.target.value)}
           />
           <textarea
-              className="w-full h-40 py-3.5 px-5 rounded-md text-input-text ring-1 ring-input focus:ring-input-active outline-0"
-              placeholder="Description"
-              value={cardDescription}
-              onChange={(e) => setCardDescription(e.target.value)}
+            className="w-full h-40 py-3.5 px-5 rounded-md text-input-text ring-1 ring-input focus:ring-input-active outline-0"
+            placeholder="Description"
+            value={cardDescription}
+            onChange={(e) => setCardDescription(e.target.value)}
           />
           <div className="flex flex-col">
             <h5>Label color</h5>
             <div className="flex gap-3">
               {labels.map((item) => (
-                  <label key={item.name} className="flex flex-col items-center cursor-pointer">
-                    <input
-                        type="radio"
-                        name="label"
-                        value={item.name}
-                        checked={selectedValue === item.name}
-                        onChange={() => handleChange(item.name)}
-                        className="absolute opacity-0 h-0 w-0"
-                    />
-                    <div
-                        className={`w-6 h-6 rounded-full border-2 mb-1 relative transition-all duration-200 ${
-                            selectedValue === item.name ? "border-gray-800 scale-110" : "border-gray-300"
-                        }`}
+                <label
+                  key={item.name}
+                  className="flex flex-col items-center cursor-pointer"
+                >
+                  <input
+                    type="radio"
+                    name="label"
+                    value={item.name}
+                    checked={selectedValue === item.name}
+                    onChange={() => handleChange(item.name)}
+                    className="absolute opacity-0 h-0 w-0"
+                  />
+                  <div
+                    className={`w-6 h-6 rounded-full border-2 mb-1 relative transition-all duration-200 ${
+                      selectedValue === item.name
+                        ? "border-gray-800 scale-110"
+                        : "border-gray-300"
+                    }`}
+                    style={{ backgroundColor: item.hex }}
+                  >
+                    {selectedValue === item.name && (
+                      <div
+                        className="absolute top-1.5 left-1.5 w-3.5 h-3.5 rounded-full"
                         style={{ backgroundColor: item.hex }}
-                    >
-                      {selectedValue === item.name && (
-                          <div
-                              className="absolute top-1.5 left-1.5 w-3.5 h-3.5 rounded-full"
-                              style={{ backgroundColor: item.hex }}
-                          />
-                      )}
-                    </div>
-                  </label>
+                      />
+                    )}
+                  </div>
+                </label>
               ))}
             </div>
           </div>
           <div className="flex flex-col">
             <h5>Deadline</h5>
             <input
-                type="date"
-                className="outline-0 ring-0 w-32 p-0"
-                name="date"
-                value={cardDeadline}
-                onChange={(e) => setCardDeadline(e.target.value)}
+              type="date"
+              className="outline-0 ring-0 w-32 p-0"
+              name="date"
+              value={cardDeadline}
+              onChange={(e) => setCardDeadline(e.target.value)}
             />
           </div>
           <Button variant={"primary"} type="submit">
-            <span className="create">+</span>{editCard ? "Save" : "Add"}
+            <span className="create">+</span>
+            {editCard ? "Save" : "Add"}
           </Button>
         </form>
       </BackupModal>

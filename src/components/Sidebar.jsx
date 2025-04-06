@@ -55,7 +55,7 @@ const Sidebar = () => {
     e.preventDefault();
     const boardData = {
       title,
-      icon: `${URL}/icons/${selectedIcon}.svg`,
+      icon: selectedIcon,
       background: `${URL}/auth/image/${selectedBackground}.jpg`,
     };
     const newBoard = await createBoard(boardData);
@@ -70,7 +70,7 @@ const Sidebar = () => {
     e.preventDefault();
     const boardData = {
       title,
-      icon: `${URL}/icons/${selectedIcon}.svg`,
+      icon: selectedIcon,
       background: `${URL}/auth/image/${selectedBackground}.jpg`,
     };
     const result = await updateBoard(boardIdToEdit, boardData);
@@ -89,6 +89,7 @@ const Sidebar = () => {
       setBoardIdToDelete(null);
     }
   };
+
 
   return (
     <>
@@ -121,7 +122,14 @@ const Sidebar = () => {
               className="p-2 rounded-md flex justify-between cursor-pointer hover:bg-boards-hover"
               onClick={() => navigate(`/${board._id}`)}
             >
-              <span className="text-text">{board.title}</span>
+              <div className="flex items-center gap-2">
+                <CustomSvg
+                  href={"/svg/board-icons.svg"}
+                  id={board.icon}
+                  className={"size-4 stroke-icon-color"}
+                />
+                <span className="text-icon-color">{board.title}</span>
+              </div>
               <div
                 className="flex gap-2.5 items-center"
                 onClick={(e) => e.stopPropagation()}
@@ -141,7 +149,7 @@ const Sidebar = () => {
                   <CustomSvg
                     href="/svg/general-use-icons.svg"
                     id="pencil"
-                    className="size-3.5"
+                    className="size-4 stroke-icon-color"
                   />
                 </Button>
                 <Button
@@ -154,7 +162,7 @@ const Sidebar = () => {
                   <CustomSvg
                     href="/svg/general-use-icons.svg"
                     id="trash"
-                    className="size-3.5"
+                    className="size-4 stroke-icon-color"
                   />
                 </Button>
               </div>
@@ -207,7 +215,7 @@ const Sidebar = () => {
                   <CustomSvg
                     id={icon.id}
                     href={icon.href}
-                    className="size-5 stroke-icon peer-checked:stroke-icon-selected hover:stroke-icon-selected"
+                    className="size-5 stroke-icon-color hover:stroke-icon-active peer-checked:stroke-icon-active"
                   />
                 </label>
               ))}
@@ -244,7 +252,7 @@ const Sidebar = () => {
 
       {/* Modal Confirm Delete */}
       <BackupModal
-        size="sm"
+        size="md"
         open={confirmDeleteModal}
         closeModal={() => {
           setConfirmDeleteModal(false);
@@ -254,7 +262,7 @@ const Sidebar = () => {
         <h4 className="mb-4">Are you sure you want to delete this board?</h4>
         <div className="flex justify-end gap-2">
           <Button
-            variant="secondary"
+            variant="cancel"
             onClick={() => setConfirmDeleteModal(false)}
           >
             Cancel

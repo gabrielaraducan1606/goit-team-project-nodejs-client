@@ -147,7 +147,7 @@ const Board = () => {
 
       {/* Confirm Delete Column Modal */}
       <BackupModal
-        size="sm"
+        size="md"
         open={confirmDeleteModal}
         closeModal={() => {
           setConfirmDeleteModal(false);
@@ -157,7 +157,7 @@ const Board = () => {
         <h4 className="mb-4">Are you sure you want to delete this column?</h4>
         <div className="flex justify-end gap-2">
           <Button
-            variant="secondary"
+            variant="cancel"
             onClick={() => setConfirmDeleteModal(false)}
           >
             Cancel

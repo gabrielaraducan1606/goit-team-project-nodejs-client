@@ -52,21 +52,21 @@ const CustomCard = ({
             <CustomSvg
               href={"/svg/general-use-icons.svg"}
               id={"bell"}
-              className={"size-5"}
+              className={"size-5 stroke-icon-active"}
             />
           )}
           <Button variant={"icon"} onClick={onEdit}>
             <CustomSvg
               href={"/svg/general-use-icons.svg"}
               id={"pencil"}
-              className={"size-5"}
+              className={"size-5 stroke-icon-color"}
             />
           </Button>
           <Button variant={"icon"} onClick={onDelete}>
             <CustomSvg
               href={"/svg/general-use-icons.svg"}
               id={"trash"}
-              className={"size-5"}
+              className={"size-5 stroke-icon-color"}
             />
           </Button>
         </div>

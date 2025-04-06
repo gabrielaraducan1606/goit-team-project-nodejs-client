@@ -29,6 +29,8 @@
   --color-create-col: #ffffff;
   --color-create-col-bg: #000000;
   --color-separator: #1616161a;
+  --color-avatar-foreground: #ffffff;
+  --color-avatar-background: #f6f6f7;
 }
 
 [data-theme="dark"] {
@@ -58,6 +60,8 @@
   --color-create-col: #000000;
   --color-create-col-bg: #ffffff;
   --color-separator: #ffffff1a;
+  --color-avatar-foreground: #151515;
+  --color-avatar-background: #1f1f1f;
 }
 
 [data-theme="violet"] {
@@ -76,8 +80,8 @@
   --color-input-active: #5255bc;
   --color-placeholder: #16161680;
   --color-input-text: #161616;
-  --color-icon-color: #16161680;
-  --color-icon-selected: #161616;
+  --color-icon-color: #ffffff80;
+  --color-icon-selected: #ffffff;
   --color-icon-active: #5255bc;
   --color-boards-hover: #ffffff33;
   --color-small-btn-primary: #d6d8ff;
@@ -87,6 +91,8 @@
   --color-create-col: #ffffff;
   --color-create-col-bg: #5255bc;
   --color-separator: #ffffff1a;
+  --color-avatar-foreground: #ffffff;
+  --color-avatar-background: #ecedfd;
 }
 
 @layer base {
@@ -127,4 +133,16 @@
 }
 .create-col {
   @apply text-create-col bg-create-col-bg size-7 flex justify-center items-center text-2xl rounded mr-4;
+}
+
+#user circle {
+  @apply fill-avatar-foreground;
+}
+
+#user path {
+  @apply fill-avatar-foreground;
+}
+
+#user rect {
+  @apply fill-avatar-background;
 }
