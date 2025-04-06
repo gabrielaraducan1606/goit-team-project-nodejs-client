@@ -18,6 +18,7 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
   const [cards, setCards] = useState([]);
   const [addCard, setAddCard] = useState(false);
   const [editCard, setEditCard] = useState(null);
+  const [isOver, setIsOver] = useState(false);
 
   const [selectedValue, setSelectedValue] = useState("");
   const [cardTitle, setCardTitle] = useState("");
@@ -27,6 +28,7 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
   const handleChange = (item) => {
     setSelectedValue(item);
     console.log(item);
+
   };
 
   useEffect(() => {
@@ -104,8 +106,34 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
     }
   };
 
+  const handleDrop = async (e) => {
+    e.preventDefault();
+    setIsOver(false);
+
+    const cardId = e.dataTransfer.getData("cardId");
+    if (cardId) {
+      await updateCard(cardId, { columnId });
+      window.location.reload();
+    }
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsOver(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsOver(false);
+  };
+
   return (
-    <div className="min-w-[21rem] flex flex-col items-center gap-5 max-h-full overflow-y-hidden">
+    <div
+        className={`min-w-[21rem] flex flex-col items-center gap-5 max-h-full overflow-y-hidden transition-all duration-200 
+        ${isOver ? "ring-2 ring-green-400 bg-green-100/10" : ""}`}
+        onDragOver={handleDragOver}
+        onDrop={handleDrop}
+        onDragLeave={handleDragLeave}
+    >
       <div className="flex w-full h-fit gap-2 bg-card-bg rounded-lg p-4 items-center">
         <h4 className="grow font-semibold">{title}</h4>
         <Button variant={"icon"} onClick={onEdit}>
@@ -126,7 +154,8 @@ const Column = ({ columnId, title, onEdit, onDelete }) => {
 
       {filteredCards.map((card) => (
         <CustomCard
-          key={card.id}
+          key={card._id}
+          id={card._id}
           title={card.title}
           description={card.description}
           priority={card.priority}
