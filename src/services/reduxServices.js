@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { cookies } from "../utils/cookies";
 import apiClient from "../utils/apiClient";
+import fileClient from "../utils/fileClient";
 
 const BASE_URL = import.meta.env.VITE_API_URL;
 
@@ -60,10 +61,9 @@ export const updateUserProfile = createAsyncThunk(
   "user/updateUserProfile",
   async (updates, thunkAPI) => {
     try {
-      const res = await axios.patch("/api/auth/profile", updates, {
-        withCredentials: true,
-      });
-      return res.data.data.user;
+      const res = await apiClient.patch("/auth/profile", updates);
+      const { name, email } = res.data.data.user;
+      return { name, email };
     } catch (err) {
       return thunkAPI.rejectWithValue(
         err.response?.data?.message || err.message
@@ -81,14 +81,8 @@ export const uploadUserAvatar = createAsyncThunk(
       const formData = new FormData();
       formData.append("avatar", file);
 
-      const res = await axios.post("/api/auth/avatar", formData, {
-        withCredentials: true,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
-      return res.data.data.user;
+      const res = await fileClient.post("/auth/avatar", formData);
+      return res.data.data.user.avatarURL;
     } catch (err) {
       return thunkAPI.rejectWithValue(
         err.response?.data?.message || err.message

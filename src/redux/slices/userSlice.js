@@ -41,10 +41,11 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(updateUserProfile.fulfilled, (state, action) => {
-        state.userData = action.payload;
+        state.userData.name = action.payload.name;
+        state.userData.email = action.payload.email;
       })
       .addCase(uploadUserAvatar.fulfilled, (state, action) => {
-        state.userData = action.payload;
+        state.userData.avatarURL = action.payload;
       })
       .addCase(loginUser.pending, (state) => {
         state.isFetching = true;

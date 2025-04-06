@@ -64,7 +64,7 @@ const Header = () => {
           <CustomSvg
             href={"/svg/general-use-icons.svg"}
             id={"filter"}
-            className={"size-4"}
+            className={"size-4 stroke-icon-color"}
           />
           <p className="text-base">Filters</p>
         </Button>

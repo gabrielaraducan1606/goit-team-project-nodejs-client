@@ -14,6 +14,8 @@ const buttonStyles = tv({
       icon: "bg-transparent size-fit",
       small:
         "bg-small-btn-primary hover:bg-small-btn-secondary text-btn-text w-[2.5rem ] h-[2.25rem] aspect-[1/1] flex items-center justify-center font-semibold",
+      danger:'bg-red-400 hover:bg-red-500 w-1/2 text-text font-semibold h-[3.125rem]',
+      cancel:'bg-primary hover:bg-secondary w-1/2 text-text font-semibold  h-[3.125rem]',
     },
     defaultVariants: {
       variant: "primary",

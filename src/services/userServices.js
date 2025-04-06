@@ -14,6 +14,7 @@ export const registerUser = async (userData) => {
   }
 };
 
+
 // Creates a new board
 // This function should be called when the user clicks the create button in the create board modal
 export const createBoard = async (boardData) => {
@@ -141,6 +142,9 @@ export const filtereCards = (query, cards) => {
 // Used to get the src for the board background
 // this function should be called every thime the board is changed and it has background
 export const selectBG = (boardId, boardArr) => {
-  const bg = boardArr.find((board) => board._id === boardId);
-  return bg.background;
+  if (boardId) {
+    const bg = boardArr.find((board) => board._id === boardId);
+    return bg.background;
+  }
+  return;
 };

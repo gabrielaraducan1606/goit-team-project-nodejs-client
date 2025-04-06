@@ -19,16 +19,12 @@ const HomePage = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <div
-        className={`flex flex-col w-full md:w-[calc(100%-245px)]`}
-        style={{
-          backgroundImage: `url(${backgroundSrc})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize:'1500px',
-        }}
-      >
+      <div className={`flex flex-col w-full md:w-[calc(100%-245px)] `}>
         <Header />
-        <div className={`overflow-x-auto whitespace-nowrap h-full`}>
+        <div
+          className={`overflow-x-auto whitespace-nowrap h-full relative`}
+          style={{ backgroundImage: `url(${backgroundSrc})` }}
+        >
           <Outlet />
         </div>
       </div>
