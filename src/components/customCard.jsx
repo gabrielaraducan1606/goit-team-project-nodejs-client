@@ -4,6 +4,7 @@ import Button from "./button";
 import CustomSvg from "./customSvg";
 
 const CustomCard = ({
+  id,
   title,
   description,
   priority,
@@ -19,8 +20,15 @@ const CustomCard = ({
   const cardDeadline = new Date(deadline);
   const dateToday = new Date();
 
+  const handleDragStart = (e) => {
+    e.dataTransfer.setData("cardId", id);
+  };
+
   return (
-    <div className="w-[20.8rem] bg-card-bg rounded-lg relative overflow-hidden p-4  flex flex-col gap-3 h-fit">
+    <div
+        draggable
+        onDragStart={handleDragStart}
+        className="w-[20.8rem] bg-card-bg rounded-lg relative overflow-hidden p-4  flex flex-col gap-3 h-fit">
       <h4>{title}</h4>
       <p className="line-clamp-2 text-xs">{description}</p>
       <hr className="my-2" />
@@ -47,13 +55,6 @@ const CustomCard = ({
               className={"size-5"}
             />
           )}
-          <Button variant={"icon"}>
-            <CustomSvg
-              href={"/svg/general-use-icons.svg"}
-              id={"arrow-circle"}
-              className={"size-5"}
-            />
-          </Button>
           <Button variant={"icon"} onClick={onEdit}>
             <CustomSvg
               href={"/svg/general-use-icons.svg"}
