@@ -16,7 +16,7 @@ import {
   deleteBoard,
 } from "../services/userServices.js";
 
-const Sidebar = () => {
+const Sidebar = ({ triggerToast }) => {
   const boards = useSelector(selectBoards);
   const [searchParams] = useSearchParams({});
 
@@ -89,7 +89,6 @@ const Sidebar = () => {
       setBoardIdToDelete(null);
     }
   };
-
 
   return (
     <>
@@ -170,7 +169,7 @@ const Sidebar = () => {
           ))}
         </div>
 
-        <HelpSection />
+        <HelpSection triggerToast={triggerToast} />
         <LogoutButton />
       </aside>
 
@@ -261,10 +260,7 @@ const Sidebar = () => {
       >
         <h4 className="mb-4">Are you sure you want to delete this board?</h4>
         <div className="flex justify-end gap-2">
-          <Button
-            variant="cancel"
-            onClick={() => setConfirmDeleteModal(false)}
-          >
+          <Button variant="cancel" onClick={() => setConfirmDeleteModal(false)}>
             Cancel
           </Button>
           <Button variant="danger" onClick={handleDeleteBoard}>

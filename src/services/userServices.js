@@ -14,7 +14,6 @@ export const registerUser = async (userData) => {
   }
 };
 
-
 // Creates a new board
 // This function should be called when the user clicks the create button in the create board modal
 export const createBoard = async (boardData) => {
@@ -147,4 +146,15 @@ export const selectBG = (boardId, boardArr) => {
     return bg.background;
   }
   return;
+};
+
+// Used to ask for help on a project
+// This function should be called after the user clicks the send button in the need help modal
+export const needHelp = async (data) => {
+  try {
+    const response = await apiClient.post("/auth/need-help", data);
+    return response.status;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
